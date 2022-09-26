@@ -1,0 +1,21 @@
+<div class="text-center">
+    <h1>註冊帳號</h1>
+</div>
+<form class="form-signup mt-3" action="/signup" method="POST" style="width: 100%;">
+    <div class="form-label-groups mb-3">
+        <input type="text" name="name" id="name" class="form-control" placeholder="名稱" value="{{name}}" >
+    </div>
+    <div class="form-label-groups mb-3">
+        <input type="text" name="email" id="email" class="form-control" placeholder="電子郵件" value="{{email}}">
+    </div>
+    <div class="form-label-groups mb-3">
+        <input type="password" name="password" id="password" class="form-control" placeholder="密碼" value="{{password}}">
+    </div>
+    <div class="form-label-groups mb-3">
+        <input type="password" name="checkPassword" id="checkPassword" class="form-control" placeholder="確認密碼">
+    </div>
+    <button class="signup-button btn btn-primary" type="submit">註冊</button>
+</form>
+<div class="text-center">
+    <a href="/signin">登入</a>
+</div>
