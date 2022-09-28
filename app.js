@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const flash = require('connect-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
+const passport = require('./config/passport') //引入 Passport
 
 const routes = require('./routes')
 const app = express()
@@ -13,6 +14,8 @@ app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true}))
 app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: false}))
+app.use(passport.initialize()) //初始化 Passport
+app.use(passport.session()) //啟動 Session
 app.use(flash())
 app.use(methodOverride('_method'))
 
