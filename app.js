@@ -4,6 +4,7 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const passport = require('./config/passport') //引入 Passport
+const { getUser } = require('./helpers/auth-helpers')
 
 const routes = require('./routes')
 const app = express()
@@ -22,6 +23,7 @@ app.use(methodOverride('_method'))
 app.use((req, res, next) => {
     res.locals.success_messages = req.flash('success_messages')
     res.locals.error_messages = req.flash('error_messages')
+    res.locals.user = getUser(req)
     next()
 })
 
