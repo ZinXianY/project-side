@@ -11,10 +11,13 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                     {{#if user.isAdmin}}
                     <li class="nav-item">
-                        <a href="/admin" class="nav-link">後台管理</a> 
+                      <a href="/admin" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span class="text-white">後台管理</span>
+                        </a> 
                     </li>
                     {{/if}}
-                    <li class="nav-item d-line-flex align-items-center">
+                    <li class="nav-item">
                         <div class="nav-link">
                         <i class="fas fa-user"></i>
                         <span class="text-white">{{user.name}}</span>

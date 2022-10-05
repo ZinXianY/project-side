@@ -5,6 +5,7 @@ const router = express.Router()
 const characterController = require('../controllers/characterController')
 const userController = require('../controllers/userController')
 
+const { authenticated } = require('../middleware/auth') //引入身分驗證
 const { generalErrorHandler } = require('../middleware/error-handler')
 
 const admin = require('./modules/admin')
@@ -19,7 +20,7 @@ router.post('/signin', passport.authenticate('local', {failureRedirect: '/signin
 
 router.get('/logout', userController.logout)
 
-router.get('/characters', characterController.getCharacters)
+router.get('/characters', authenticated, characterController.getCharacters)
 router.use('/', (req, res) => res.redirect('/characters'))
 
 router.use('/', generalErrorHandler)
