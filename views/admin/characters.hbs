@@ -38,8 +38,9 @@
 
 <h1>後台管理</h1>
 <a href="/admin/characters/create" class="btn btn-primary">新增騎士</a>
+<div class="d-flex">
 {{#each characters}}
-<div class="card mt-4" style="width: 18rem;">
+<div class="card mt-4 m-4" style="width: 18rem;">
   <a href="/admin/characters/{{this.id}}">
   <img src="..." class="card-img-top" alt="...">
   </a>
@@ -54,3 +55,4 @@
   </div>
 </div>
 {{/each}}
+</div>

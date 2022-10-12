@@ -5,12 +5,12 @@ const router = express.Router()
 const characterController = require('../controllers/characterController')
 const userController = require('../controllers/userController')
 
-const { authenticated } = require('../middleware/auth') //引入身分驗證
+const { authenticated, authenticatedAdmin } = require('../middleware/auth') //引入身分驗證
 const { generalErrorHandler } = require('../middleware/error-handler')
 
 const admin = require('./modules/admin')
 
-router.use('/admin', admin)//收到有關/admin的路徑一律給後臺專用modules處理
+router.use('/admin', authenticatedAdmin, admin)//收到有關/admin的路徑一律給後臺專用modules處理
 
 router.get('/signup', userController.signUpPage)
 router.post('/signup', userController.signUp)

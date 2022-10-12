@@ -7,6 +7,22 @@ const adminController = {
         })
         .then(characters => res.render('admin/characters', {characters}))
         .catch(err => next(err))
+    },
+    createCharacter: (req, res) => {
+        res.render('admin/create')
+    },
+    postCharacter: (req, res, next) => {
+        const { name, year, description } = req.body
+        Character.create({
+            name,
+            year,
+            description
+        })
+        .then(() => {
+            req.flash('success_messages', '新增成功!')
+            res.redirect('/admin/characters')
+        })
+        .catch(err => next(err))
     }
 }
 
