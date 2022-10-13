@@ -23,6 +23,15 @@ const adminController = {
             res.redirect('/admin/characters')
         })
         .catch(err => next(err))
+    },
+    getCharacter: (req, res, next) => {
+        Character.findByPk(req.params.id, {
+            raw: true
+        })
+        .then(character => {
+            res.render('admin/character', { character })
+        })
+        .catch(err => next(err))
     }
 }
 
