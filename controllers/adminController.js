@@ -32,6 +32,32 @@ const adminController = {
             res.render('admin/character', { character })
         })
         .catch(err => next(err))
+    },
+    editCharacter: (req, res) => {
+        Character.findByPk(req.params.id)
+        .then(character => {
+            const { name, year, description } = character.toJSON()
+            res.json({
+                name,
+                year,
+                description
+            })
+        })
+    },
+    putCharacter:(req, res) => {
+        const { name, year, description } = req.body
+        Character.findByPk(req.params.id)
+        .then(character => {
+            character.update({
+                name,
+                year,
+                description
+            })
+            .then(() => {
+                req.flash('success_messages', '角色資料更新成功!')
+                res.redirect('back')
+            })
+        })
     }
 }
 

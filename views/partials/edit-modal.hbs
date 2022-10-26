@@ -1,0 +1,36 @@
+
+<div class="modal fade" id="exampleModal-edit{{this.id}}" tabindex="-1" role="dialog" 
+aria-labelledby="edit-character" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form action="/admin/api/characters/{{this.id}}" method="POST">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">編輯角色資料</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-row mb-2">
+        <label class="form-label" for="name">角色名稱</label>
+        <input class="form-control" type="text" name="name" id="input-name" placeholder="輸入名稱" value="{{this.name}}" required>
+        </div>
+
+        <div class="form-row mb-2">
+        <label class="form-label" for="year">角色年份</label>
+        <input class="form-control" type="text" name="year" id="year" placeholder="輸入年份" value="{{this.year}}">
+        </div>
+
+        <div class="form-row mb-2">
+        <label class="form-label" for="description">角色介紹</label>
+        <textarea class="form-control" name="description" id="description" rows="3">{{this.description}}</textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">關閉</button>
+        <button type="sumbit" id="edit-save" class="btn btn-success">儲存</button>
+      </div>
+    </div>
+   </form>
+  </div>
+</div>

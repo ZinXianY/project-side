@@ -13,12 +13,13 @@ const SESSION_SECRET = 'secret'
 
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
+app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true}))
+app.use(express.json())
 app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: false}))
 app.use(passport.initialize()) //初始化 Passport
 app.use(passport.session()) //啟動 Session
 app.use(flash())
-app.use(methodOverride('_method'))
 
 app.use((req, res, next) => {
     res.locals.success_messages = req.flash('success_messages')
@@ -26,6 +27,8 @@ app.use((req, res, next) => {
     res.locals.user = getUser(req)
     next()
 })
+
+app.use(methodOverride('_method'))
 
 app.use(routes)
 

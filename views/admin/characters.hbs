@@ -16,6 +16,12 @@
                         <span class="text-white">使用者首頁</span>
                         </a> 
                     </li>
+                    <li class="nav-item">
+                      <a href="/admin/characters/create" class="nav-link">
+                      <i class="fas fa-plus"></i>
+                      <span class="text-white">新增角色</span>
+                      </a>
+                    </li>
                     {{/if}}
                     <li class="nav-item">
                         <div class="nav-link">
@@ -37,7 +43,6 @@
 </header>
 
 <h1>後台管理</h1>
-<a href="/admin/characters/create" class="btn btn-primary">新增騎士</a>
 <div class="d-flex">
 {{#each characters}}
 <div class="card mt-4 m-4" style="width: 18rem;">
@@ -49,10 +54,13 @@
     <h6 class="card-year">{{this.year}}</h6>
     <p class="card-text">{{this.description}}</p>
     <div class="d-flex justify-content-end">
-    <a href="#" class="btn btn-primary mx-2">編輯</a>
+    <div class="edit btn btn-primary mx-2" id="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal-edit{{this.id}}">編輯</div>
     <a href="#" class="btn btn-danger">刪除</a>
     </div>
   </div>
 </div>
+{{> edit-modal}}
+
 {{/each}}
 </div>
+
