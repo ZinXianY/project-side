@@ -33,7 +33,7 @@ const adminController = {
         })
         .catch(err => next(err))
     },
-    editCharacter: (req, res) => {
+    editCharacter: (req, res, next) => {
         Character.findByPk(req.params.id)
         .then(character => {
             const { name, year, description } = character.toJSON()
@@ -42,9 +42,10 @@ const adminController = {
                 year,
                 description
             })
+            .catch(err => next(err))
         })
     },
-    putCharacter:(req, res) => {
+    putCharacter:(req, res, next) => {
         const { name, year, description } = req.body
         Character.findByPk(req.params.id)
         .then(character => {
@@ -57,7 +58,16 @@ const adminController = {
                 req.flash('success_messages', '角色資料更新成功!')
                 res.redirect('back')
             })
+            .catch(err => next(err))
         })
+    },
+    deleteCharacter: (req, res, next) => {
+        return Character.findByPk(req.params.id)
+        .then(character => {
+          return character.destroy()
+        })
+        .then(() => res.redirect('/admin/characters'))
+        .catch(err => next(err))
     }
 }
 
