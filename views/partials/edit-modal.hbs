@@ -2,7 +2,7 @@
 <div class="modal fade" id="exampleModal-edit{{this.id}}" tabindex="-1" role="dialog" 
 aria-labelledby="edit-character" style="display: none;" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form action="/admin/api/characters/{{this.id}}" method="POST">
+    <form action="/admin/api/characters/{{this.id}}" method="POST" enctype="multipart/form-data">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title">編輯角色資料</h1>
@@ -24,6 +24,11 @@ aria-labelledby="edit-character" style="display: none;" aria-hidden="true">
         <label class="form-label" for="description">角色介紹</label>
         <textarea class="form-control" name="description" id="description" rows="3">{{this.description}}</textarea>
         </div>
+
+         <div class="form-row mb-3">
+         <label class="form-label" for="image">圖片</label>
+         <input class="form-control" type="file" class="form-control-file" id="image" name="image">
+         </div>
       </div>
 
       <div class="modal-footer">

@@ -1,4 +1,5 @@
 const { Character } = require('../models')
+const { localFileHandler} = require('../helpers/file-helpers')
 
 const adminController = {
     getCharacters: (req, res, next) => {
@@ -13,11 +14,14 @@ const adminController = {
     },
     postCharacter: (req, res, next) => {
         const { name, year, description } = req.body
-        Character.create({
+        const file = req.file
+        localFileHandler(file)
+         .then(filePath => Character.create({
             name,
             year,
-            description
-        })
+            description,
+            image: filePath || null
+        }))
         .then(() => {
             req.flash('success_messages', '新增成功!')
             res.redirect('/admin/characters')
@@ -47,12 +51,17 @@ const adminController = {
     },
     putCharacter:(req, res, next) => {
         const { name, year, description } = req.body
-        Character.findByPk(req.params.id)
-        .then(character => {
-            character.update({
+        const file = req.file
+        Promise.all([
+            Character.findByPk(req.params.id),
+            localFileHandler(file)
+        ])
+        .then(([ character, filePath ]) => {
+            return character.update({
                 name,
                 year,
-                description
+                description,
+                image: filePath || character.image
             })
             .then(() => {
                 req.flash('success_messages', '角色資料更新成功!')

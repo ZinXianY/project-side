@@ -1,4 +1,4 @@
-<form action="/admin/characters" method="POST">
+<form action="/admin/characters" method="POST" enctype="multipart/form-data">
   <div class="mb-4 text-center">
     <h1 class="h3 font-weight-normal mb-3">新增角色</h1>
   </div>
@@ -15,6 +15,11 @@
   <div class="form-row mb-3">
     <label class="form-label" for="description">介紹</label>
     <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+  </div>
+
+  <div class="form-row mb-3">
+    <label class="form-label" for="image">圖片</label>
+    <input class="form-control" type="file" class="form-control-file" id="image" name="image">
   </div>
 
   <button type="submit" class="btn btn-primary">確定</button>
