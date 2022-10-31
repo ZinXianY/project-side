@@ -1,11 +1,27 @@
-<a href="javascript:history.back()" class="btn btn-outline-primary mb-2">返回</a>
-<hr>
-<div class="card text-bg-dark text-center mt-5">
-  <img src="" class="card-img" alt="...">
-  <div class="card-img-overlay d-flex align-items-start flex-column">
-    <h1 class="card-title">{{character.name}}</h1>
-    <h4 class="card-text">{{character.year}}</h4>
-    <h5 class="card-text"><small>{{character.description}}</small></h5>
+<div class="card">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{character.image}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <div class="card-title-ch">{{character.name}}</div>
+        <hr />
+
+        <div class="section">
+          <img src="https://p2.bahamut.com.tw/B/2KU/72/0000998972.JPG" class="avatar-img" alt="...">
+          <div class="card-text">
+            <p class="avatar-name">{{character.avatarName}}</p>
+            <p class="card-year">登場: {{character.year}}</p>
+            <p class="card-category">系列: Category</p>
+            <p class="card-description">簡介: {{character.description}}</p>
+          </div>
+        </div>
+        <a href="javascript:history.back()" id="ch-btn" class="btn btn-success mx-2">
+          <i class="fas fa-undo-alt"></i>
+          <span>返回</span>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
-
