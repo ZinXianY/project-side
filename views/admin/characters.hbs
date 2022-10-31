@@ -1,68 +1,69 @@
 <header>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light px-4" style="background-color: #DAA520">
-        <div class="container-fluid">
-            <a href="/" class="navbar-brand text-white">Gundam Characters</a>
-            {{#if user}}
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" 
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
-                    {{#if user.isAdmin}}
-                    <li class="nav-item">
-                      <a href="/" class="nav-link">
-                        <i class="fas fa-undo-alt"></i>
-                        <span class="text-white">使用者首頁</span>
-                        </a> 
-                    </li>
-                    <li class="nav-item">
-                      <a href="/admin/characters/create" class="nav-link">
-                      <i class="fas fa-plus"></i>
-                      <span class="text-white">新增角色</span>
-                      </a>
-                    </li>
-                    {{/if}}
-                    <li class="nav-item">
-                        <div class="nav-link">
-                        <i class="fas fa-user"></i>
-                        <span class="text-white">{{user.name}}</span>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span class="text-white">登出</span>
-                        </a>
-                    </li>
-                </ul>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light px-4" style="background-color: #DAA520">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand text-white">Gundam Characters</a>
+      {{#if user}}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+          {{#if user.isAdmin}}
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i class="fas fa-undo-alt"></i>
+              <span class="text-white">使用者首頁</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/characters/create" class="nav-link">
+              <i class="fas fa-plus"></i>
+              <span class="text-white">新增角色</span>
+            </a>
+          </li>
+          {{/if}}
+          <li class="nav-item">
+            <div class="nav-link">
+              <i class="fas fa-user"></i>
+              <span class="text-white">{{user.name}}</span>
             </div>
-            {{/if}}
-        </div>
-    </nav>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="text-white">登出</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      {{/if}}
+    </div>
+  </nav>
 </header>
 
-<h1>後台管理</h1>
+<h1>Backstage Management</h1>
 <div class="d-flex">
-{{#each characters}}
-<div class="card mt-4 m-4" style="width: 18rem;">
-  <a href="/admin/characters/{{this.id}}">
-  <img src="{{this.image}}" class="card-img-top" alt="...">
-  </a>
-  <div class="card-body">
-    <h4 class="card-title">{{this.name}}</h4>
-    <h6 class="card-year">{{this.year}}</h6>
-    <p class="card-text">{{this.description}}</p>
-    <div class="d-flex justify-content-end">
-    <div class="edit btn btn-primary mx-2" id="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal-edit{{this.id}}">編輯</div>
-    <form action="/admin/characters/{{this.id}}?_method=DELETE" method="POST">
-    <button type="submit" class="btn btn-danger" onclick="return confirm(`確定要刪除 {{ this.name }} 嗎?`)">刪除</button>
-    </form>
+  {{#each characters}}
+  <div class="card mt-4 m-4" style="width: 18rem;">
+    <a href="/admin/characters/{{this.id}}">
+      <img src="{{this.image}}" class="card-img-top" alt="...">
+    </a>
+    <div class="card-body">
+      <h4 class="card-title">{{this.name}}</h4>
+      <h6 class="card-year">{{this.year}}</h6>
+      <h6 class="card-avatarName">{{this.avatarName}}</h6>
+      <p class="card-description">{{this.description}}</p>
+      <div class="d-flex justify-content-end">
+        <div class="edit btn btn-primary mx-2" id="edit-btn" data-bs-toggle="modal"
+          data-bs-target="#exampleModal-edit{{this.id}}">編輯</div>
+        <form action="/admin/characters/{{this.id}}?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-danger" onclick="return confirm(`確定要刪除 {{ this.name }} 嗎?`)">刪除</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-{{> edit-modal}}
+  {{> edit-modal}}
 
-{{/each}}
+  {{/each}}
 </div>
-
