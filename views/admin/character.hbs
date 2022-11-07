@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card" style="border-radius: 15px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{character.image}}" class="img-fluid rounded-start" alt="...">
+      <img src="{{character.image}}" class="img-fluid " alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -9,9 +9,9 @@
         <hr />
 
         <div class="section">
-          <img src="https://p2.bahamut.com.tw/B/2KU/72/0000998972.JPG" class="avatar-img" alt="...">
+          <img src="{{character.avatar}}" class="avatar-img" alt="...">
           <div class="card-text">
-            <p class="avatar-name">{{character.avatarName}}</p>
+            <p class="avatar-name">{{character.avatarName}}</p><br>
             <p class="card-year">登場: {{character.year}}</p>
             <p class="card-category">系列: Category</p>
             <p class="card-description">簡介: {{character.description}}</p>

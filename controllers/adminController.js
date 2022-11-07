@@ -12,17 +12,28 @@ const adminController = {
     createCharacter: (req, res) => {
         res.render('admin/create')
     },
-    postCharacter: (req, res, next) => {
+    postCharacter: async (req, res, next) => {
         const { name, year, avatarName, description } = req.body
-        const file = req.file
-        localFileHandler(file)
-            .then(filePath => Character.create({
-                name,
-                year,
-                avatarName,
-                description,
-                image: filePath || null
-            }))
+        const { files } = req
+        console.log(req.files)
+        let avatarLink
+        let imageLink
+
+        if (files.avatar) {
+            avatarLink = await localFileHandler(files.avatar[0])
+        }
+        if (files.image) {
+            imageLink = await localFileHandler(files.image[0])
+        }
+
+        return Character.create({
+            name,
+            year,
+            avatarName,
+            description,
+            image: files.image ? imageLink: null,
+            avatar: files.avatar ? avatarLink: null
+        })
             .then(() => {
                 req.flash('success_messages', '新增成功!')
                 res.redirect('/admin/characters')
@@ -51,27 +62,36 @@ const adminController = {
                     .catch(err => next(err))
             })
     },
-    putCharacter: (req, res, next) => {
+    putCharacter: async (req, res, next) => {
         const { name, year, avatarName, description } = req.body
-        const file = req.file
-        Promise.all([
-            Character.findByPk(req.params.id),
-            localFileHandler(file)
-        ])
-            .then(([character, filePath]) => {
-                return character.update({
+        const { files } = req
+        console.log(req.files)
+        let avatarLink
+        let imageLink
+
+        if (files.avatar) {
+            avatarLink = await localFileHandler(files.avatar[0])
+        }
+        if (files.image) {
+            imageLink = await localFileHandler(files.image[0])
+        }
+
+        Character.findByPk(req.params.id)
+            .then(character => {
+                character.update({
                     name,
                     year,
                     avatarName,
                     description,
-                    image: filePath || character.image
+                    avatar: files.avatar ? avatarLink : character.avatar,
+                    image: files.image ? imageLink : character.image
                 })
-                    .then(() => {
-                        req.flash('success_messages', '角色資料更新成功!')
-                        res.redirect('back')
-                    })
-                    .catch(err => next(err))
             })
+            .then(() => {
+                req.flash('success_messages', '角色資料更新成功!')
+                res.redirect('back')
+            })
+            .catch(err => next(err))
     },
     deleteCharacter: (req, res, next) => {
         return Character.findByPk(req.params.id)
