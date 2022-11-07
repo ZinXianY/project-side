@@ -5,18 +5,20 @@ body {
 
 #ch-btn {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 5px;
+    right: 5px;
 }
 
 .card {
     margin-top: 6%;
     height: 600px;
+    border: 2px solid burlywood;
 }
 
 .img-fluid {
-    height: 598px;
+    height: 596px;
     width: 600px;
+    border-radius: 13px;
 }
 
 .card-title-ch {
@@ -37,23 +39,78 @@ hr {
     font-weight: bold;
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 360px) {
     .section {
         display: flex;
         flex-flow: row nowrap;
     }
 
     .avatar-img {
-        flex-basis: 30%;
-        margin-top: 7%;
-        height: 320px;
-        width: 420px;
+        height: 300px;
+        width: 40%;
+        border-radius: 50%;
     }
 
     .card-text {
+        width: 60%;
         flex-grow: 1;
         font-size: 20px;
         font-weight: bold;
-        margin-top: 7%;
+        margin-top: 5%;
+        margin-left: 5%;
     }
+}
+
+.chs-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: burlywood;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#chs-card {
+    display: inline-block;
+    font-size: 18px;
+    width: 270px;
+    margin-left: 3%;
+    padding: 0%;
+    border-radius: 20px;
+}
+
+.img-body {
+    height: 285px;
+    overflow: hidden;
+    border-radius: 18px 18px 0px 0px;
+}
+
+.img-body img {
+    height: 230px;
+    border-bottom: 2px solid silver;
+    transform: scale(1.0);
+    transition-duration: 1000ms;
+}
+
+.img-body img:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.chs-avatar-img {
+    position: absolute;
+    width: 180px;
+    height: 170px;
+    left: 50px;
+    top: 130px;
+    border-radius: 50%;
+    border: 2px solid silver;
+    background-size: cover;
+    object-fit: cover;
+}
+
+#chs-body {
+    font-size: 20px;
+    font-weight: bold;
 }
