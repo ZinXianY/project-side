@@ -1,5 +1,10 @@
 html,
 body {
+    background-image: url(https://tk.ismcdn.jp/mwimgs/b/4/1200w/img_b4640e640ac9a29727bccb651bc42c91268208.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
