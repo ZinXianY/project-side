@@ -1,19 +1,32 @@
-const { Character } = require('../models')
+const { Character, Category } = require('../models')
 const { localFileHandler } = require('../helpers/file-helpers')
 
 const adminController = {
     getCharacters: (req, res, next) => {
-        Character.findAll({
-            raw: true
-        })
-            .then(characters => res.render('admin/characters', { characters }))
+        const categoryId = Number(req.query.categoryId) || ''
+        const where = {}
+        if (categoryId) where.categoryId = categoryId
+        Promise.all([
+            Character.findAll({
+                raw: true,
+                nest: true,
+                include: [Category],
+                where: where
+            }),
+            Category.findAll({ raw: true })
+        ])
+            .then(([characters, categories]) => res.render('admin/characters', { characters, categories, categoryId }))
             .catch(err => next(err))
     },
-    createCharacter: (req, res) => {
-        res.render('admin/create')
+    createCharacter: (req, res, next) => {
+        return Category.findAll({
+            raw: true
+        })
+            .then(categories => res.render('admin/create', { categories }))
+            .catch(err => next(err))
     },
     postCharacter: async (req, res, next) => {
-        const { name, year, avatarName, description } = req.body
+        const { name, year, avatarName, description, categoryId } = req.body
         const { files } = req
         console.log(req.files)
         let avatarLink
@@ -31,8 +44,9 @@ const adminController = {
             year,
             avatarName,
             description,
-            image: files.image ? imageLink: null,
-            avatar: files.avatar ? avatarLink: null
+            image: files.image ? imageLink : null,
+            avatar: files.avatar ? avatarLink : null,
+            categoryId
         })
             .then(() => {
                 req.flash('success_messages', '新增成功!')
@@ -42,7 +56,9 @@ const adminController = {
     },
     getCharacter: (req, res, next) => {
         Character.findByPk(req.params.id, {
-            raw: true
+            raw: true,
+            nest: true,
+            include: [Category]
         })
             .then(character => {
                 res.render('admin/character', { character })
