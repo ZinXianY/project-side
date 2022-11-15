@@ -1,4 +1,4 @@
-<div class="card" style="border-radius: 15px;">
+<div class="card" style="border-radius: 15px; background: ghostwhite;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="{{character.image}}" class="img-fluid " alt="...">
@@ -12,8 +12,8 @@
           <img src="{{character.avatar}}" class="avatar-img" alt="...">
           <div class="card-text">
             <p class="avatar-name">{{character.avatarName}}</p><br>
-            <p class="card-year">登場: {{character.year}}</p>
-            <p class="card-category">系列: Category</p>
+            <p class="card-year">登場: {{character.year}}年</p>
+            <p class="card-category">系列: {{character.Category.name}}</p>
             <p class="card-description">簡介: {{character.description}}</p>
           </div>
         </div>
