@@ -1,0 +1,21 @@
+<div class="modal fade" id="exampleModal-create" tabindex="-1" role="dialog" aria-labelledby="create-category"
+  style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form action="/admin/api/categories" method="POST">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">新增系列</div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <input class="form-control" type="text" name="name" id="name" placeholder="輸入系列名稱" required>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">新增</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
