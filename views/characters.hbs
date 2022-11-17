@@ -1,2 +1,38 @@
 {{> header}}
-<div> characters</div>
+
+<div class="chs-title">Characters</div>
+
+<ul class="nav nav-tabs mt-4 mb-3">
+  <li class="nav-item" id="ch-tabs">
+  <a class="nav-link active" href="/characters">首頁</a>
+  </li>
+  <li class="nav-ltem" id="ch-tabs">
+    <a class="nav-link" href="#">收藏</a>
+  </li>
+</ul>
+
+<div class="chs-row">
+  {{#each characters}}
+  <div class="card mt-4" id="chs-card">
+    <div class="img-body">
+      <a href="/admin/characters/{{this.id}}">
+        <img src="{{this.image}}" class="card-img-top" alt="...">
+      </a>
+    </div>
+    <a href="/admin/characters/{{this.id}}">
+      <img src="{{this.avatar}}" class="chs-avatar-img" alt="...">
+    </a>
+    <div class="card-body" id="chs-body">
+      <div class="card-title" style="font-size: 24px;">{{this.name}}</div>
+      <div class="card-year">{{this.year}}年</div>
+      <div class="card-avatarName">{{this.avatarName}}</div>
+      <div class="card-category">{{this.Category.name}}</div>
+      <div class="card-description">{{this.description}}</div>
+    </div>
+  </div>
+  {{> edit-modal}}
+
+  {{/each}}
+
+</div>
+<hr>

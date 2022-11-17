@@ -190,3 +190,24 @@ hr {
     display: flex;
     margin-right: 2.5%;
 }
+
+
+.nav-tabs {
+    border-bottom: 2px solid silver;
+}
+
+.nav-tabs .nav-link.active {
+    color: whitesmoke;
+    background-color: lightskyblue;
+    border: 1px solid silver;
+}
+
+#ch-tabs {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#ch-tabs a:hover {
+    color: whitesmoke;
+    background-color: lightskyblue;
+}
