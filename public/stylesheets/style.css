@@ -156,3 +156,37 @@ hr {
 #category-delete button:hover {
     background-color: red;
 }
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-item {
+    border: 2px solid silver;
+    border-radius: 6.5px;
+    margin-left: 6px;
+    height: 43px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.page-item a:hover {
+    color: whitesmoke;
+    background-color: lightskyblue;
+}
+
+.page-link {
+    border: 0;
+    background-color: transparent;
+    color: lightskyblue;
+}
+
+.page-item.active .page-link {
+    background-color: lightskyblue;
+}
+
+.page-number {
+    display: flex;
+    margin-right: 2.5%;
+}

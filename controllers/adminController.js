@@ -1,21 +1,41 @@
 const { Character, Category } = require('../models')
 const { localFileHandler } = require('../helpers/file-helpers')
+const { getOffset, getPagination } = require('../helpers/pagination-helper')
 
 const adminController = {
     getCharacters: (req, res, next) => {
+        const DEFAULT_LIMIT = 8
         const categoryId = Number(req.query.categoryId) || ''
+        //Pagination
+        const page = Number(req.query.page) || 1
+        const limit = Number(req.query.limit) || DEFAULT_LIMIT
+        const offset = getOffset(limit, page)
+
         const where = {}
         if (categoryId) where.categoryId = categoryId
+
         Promise.all([
-            Character.findAll({
+            Character.findAndCountAll({
                 raw: true,
                 nest: true,
                 include: [Category],
-                where: where
+                where: where,
+                limit,
+                offset
             }),
             Category.findAll({ raw: true })
         ])
-            .then(([characters, categories]) => res.render('admin/characters', { characters, categories, categoryId }))
+            .then(([characters, categories]) => {
+                const data = characters.rows.map(r => ({
+                    ...r
+                }))
+                return res.render('admin/characters', {
+                    characters: data,
+                    categories,
+                    categoryId,
+                    pagination: getPagination(limit, page, characters.count)
+                })
+            })
             .catch(err => next(err))
     },
     createCharacter: (req, res, next) => {

@@ -74,6 +74,7 @@
 {{> category-modal}}
 
 <div class="chs-row">
+  {{#if characters}}
   {{#each characters}}
   <div class="card mt-4" id="chs-card">
     <div class="img-body">
@@ -102,4 +103,11 @@
   {{> edit-modal}}
 
   {{/each}}
+
 </div>
+<hr>
+{{> pagination}}
+
+{{else}}
+<div class="text-white">目前無任何資料!</div>
+{{/if}}
