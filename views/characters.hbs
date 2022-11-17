@@ -43,9 +43,34 @@
       <div class="card-description">{{this.description}}</div>
     </div>
   </div>
-  {{> edit-modal}}
 
   {{/each}}
 
 </div>
 <hr>
+
+<div class="pagination">
+  <div class="page-item {{#ifCond pagination.currentPage 1}}{{/ifCond}}">
+    <a class="page-link" href="/characters?page={{pagination.prev}}&categoryId={{categoryId}}">
+      <i class="fas fa-chevron-left"></i>
+    </a>
+  </div>
+  <div class="page-number">
+    {{#each pagination.pages}}
+    {{#ifCond this ../pagination.currentPage}}
+    <div class="page-item active">
+      <a class="page-link" href="#">{{this}}</a>
+    </div>
+    {{else}}
+    <div class="page-item">
+      <a class="page-link" href="/characters?page={{this}}&categoryId={{../categoryId}}">{{this}}</a>
+    </div>
+    {{/ifCond}}
+    {{/each}}
+  </div>
+  <div class="page-item {{#ifCond pagination.currentPage pagination.totalPage}}{{/ifCond}}">
+    <a class="page-link" href="/characters?page={{pagination.next}}&categoryId={{categoryId}}">
+      <i class="fas fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
