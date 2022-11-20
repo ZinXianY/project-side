@@ -31,6 +31,18 @@
       <a href="/characters/{{this.id}}">
         <img src="{{this.image}}" class="card-img-top" alt="...">
       </a>
+      <form action="/like/{{this.id}}" method="POST">
+        <button class="like-button" type="submit">
+          <i class="far fa-heart"></i>
+        </button>
+      </form>
+
+      <form action="/like/{{this.id}}?_method=DELETE" method="POST">
+        <button class="unlike-button" type="submit">
+          <i class="far fa-heart"></i>
+        </button>
+      </form>
+
     </div>
     <a href="/characters/{{this.id}}">
       <img src="{{this.avatar}}" class="chs-avatar-img" alt="...">

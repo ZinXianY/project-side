@@ -23,6 +23,9 @@ router.get('/logout', userController.logout)
 router.get('/characters/:id', authenticated, characterController.getCharacter)
 router.get('/characters', authenticated, characterController.getCharacters)
 
+router.post('/like/:characterId', authenticated, userController.addLike)
+router.delete('/like/:characterId', authenticated, userController.removeLike)
+
 router.use('/', (req, res) => res.redirect('/characters'))
 
 router.use('/', generalErrorHandler)

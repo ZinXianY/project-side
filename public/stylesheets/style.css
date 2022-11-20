@@ -211,3 +211,13 @@ hr {
     color: whitesmoke;
     background-color: lightskyblue;
 }
+
+.like-button {
+    position: absolute;
+    top: 10px;
+    left: 220px;
+    font-size: 26px;
+    border: 0;
+    color: dimgray;
+    background: transparent;
+}

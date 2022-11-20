@@ -1,6 +1,5 @@
 const bcrypt = require('bcryptjs')
-const db = require('../models')
-const User = db.User
+const { User, Character, Like } = require('../models')
 
 const userController = {
     signUpPage: (req, res) => {
@@ -38,6 +37,46 @@ const userController = {
       if (err) {return next(err)}
     })
     res.redirect('/signin')
+  },
+  addLike: (req, res, next) => {
+    const { characterId } = req.params
+    Promise.all([
+      Character.findByPk(characterId),
+      Like.findOne({
+        where: {
+          userId: req.user.id,
+          characterId
+        }
+      })
+    ])
+      .then(like => {
+        return Like.create({
+          userId: req.user.id,
+          characterId
+        })
+      })
+      .then(() => {
+        req.flash('success_messages', '已加入收藏清單!')
+        res.redirect('back')
+      })
+      .catch(err => next(err))
+  },
+  removeLike: (req, res, next) => {
+    const { characterId } = req.params
+    return Like.findOne({
+      where: {
+        userId: req.user.id,
+        characterId
+      }
+    })
+    .then(like => {
+      return like.destroy()
+    })
+    .then(() => {
+      req.flash('error_messages', '已移除收藏清單!')
+      res.redirect('back')
+    })
+    .catch(err => next(err))
   }
 }
 
