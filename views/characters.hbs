@@ -4,7 +4,7 @@
 
 <ul class="nav nav-tabs mt-4 mb-3">
   <li class="nav-item" id="ch-tabs">
-  <a class="nav-link active" href="/characters">首頁</a>
+    <a class="nav-link active" href="/characters">首頁</a>
   </li>
   <li class="nav-ltem" id="ch-tabs">
     <a class="nav-link" href="#">收藏</a>
@@ -25,24 +25,27 @@
 <br>
 
 <div class="chs-row">
+  {{#if characters}}
   {{#each characters}}
   <div class="card mt-4" id="chs-card">
     <div class="img-body">
       <a href="/characters/{{this.id}}">
         <img src="{{this.image}}" class="card-img-top" alt="...">
       </a>
-      <form action="/like/{{this.id}}" method="POST">
-        <button class="like-button" type="submit">
-          <i class="far fa-heart"></i>
-        </button>
-      </form>
-
+      {{#if isLiked}}
       <form action="/like/{{this.id}}?_method=DELETE" method="POST">
         <button class="unlike-button" type="submit">
-          <i class="far fa-heart"></i>
+          <i class="fa fa-heart"></i>
+        </button>
+      </form>
+      {{else}}
+      <form action="/like/{{this.id}}" method="POST">
+        <button class="like-button" type="submit">
+          <i class="fa fa-heart" id="btn-heart"></i>
         </button>
       </form>
 
+      {{/if}}
     </div>
     <a href="/characters/{{this.id}}">
       <img src="{{this.avatar}}" class="chs-avatar-img" alt="...">
@@ -86,3 +89,7 @@
     </a>
   </div>
 </div>
+
+{{else}}
+<div class="text-white">尚無任何資料!</div>
+{{/if}}

@@ -25,8 +25,11 @@ const characterController = {
             Category.findAll({ raw: true })
         ])
             .then(([characters, categories]) => {
+                const likedCharactersId = req.user && req.user.LikedCharacters.map(lc => lc.id)
+
                 const data = characters.rows.map(r => ({
-                    ...r
+                    ...r,
+                    isLiked: likedCharactersId.includes(r.id)
                 }))
                 return res.render('characters', {
                     characters: data,
