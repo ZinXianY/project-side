@@ -1,0 +1,31 @@
+<div class="modal fade" id="profile-edit" tabindex="-1" role="dialog" aria-labelledby="profile-edit"
+  style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form action="/api/users/{{user.id}}" method="POST" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">編輯個人資料</div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="form-row mb-2">
+            <label for="name">名稱</label>
+            <input class="form-control" type="text" name="name" id="name" placeholder="輸入名稱" value="{{user.name}}"
+              required>
+          </div>
+
+          <div class="form-row mb-2">
+            <label class="form-label" for="avatar">照片</label>
+            <input class="form-control" type="file" id="avatar" name="avatar">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">儲存</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

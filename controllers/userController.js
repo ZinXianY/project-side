@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const { User, Character, Like } = require('../models')
+const { localFileHandler } = require('../helpers/file-helpers')
 const { User, Character, Like, Category } = require('../models')
 
 const userController = {
@@ -57,6 +57,33 @@ const userController = {
         return res.render('profile', { user })
       })
   },
+  editUser: (req, res, next) => {
+    return User.findByPk(req.params.id)
+    .then(user => {
+      res.json(user.toJSON())
+    })
+    .catch(err => next(err))
+  },
+  putUser: (req, res, next) => {
+    const { name } = req.body
+    const { file } = req
+    Promise.all([
+      User.findByPk(req.params.id),
+      localFileHandler(file)
+    ])
+    .then(([user, filePath]) => {
+      return user.update({
+        name,
+        avatar: filePath || user.avatar
+      })
+    })
+    .then(() => {
+      req.flash('success_messages', '個人資料更新成功!')
+      res.redirect('back')
+    })
+    .catch(err => next(err))
+  },
+
   addLike: (req, res, next) => {
     const { characterId } = req.params
     Promise.all([

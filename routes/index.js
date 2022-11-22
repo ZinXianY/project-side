@@ -7,6 +7,7 @@ const userController = require('../controllers/userController')
 
 const { authenticated, authenticatedAdmin } = require('../middleware/auth') //引入身分驗證
 const { generalErrorHandler } = require('../middleware/error-handler')
+const upload = require('../middleware/multer')
 
 const admin = require('./modules/admin')
 
@@ -24,6 +25,9 @@ router.get('/characters/:id', authenticated, characterController.getCharacter)
 router.get('/characters', authenticated, characterController.getCharacters)
 
 router.get('/users/:id', authenticated, userController.getUser)
+router.get('/api/users/:id', authenticated, userController.editUser)
+router.post('/api/users/:id', upload.single('avatar'), authenticated, userController.putUser)
+
 router.post('/like/:characterId', authenticated, userController.addLike)
 router.delete('/like/:characterId', authenticated, userController.removeLike)
 
