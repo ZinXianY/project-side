@@ -235,4 +235,10 @@ hr {
     color: red;
     opacity: 0.9;
     background: transparent;
+
+.user-avatar {
+    position: relative;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
 }
