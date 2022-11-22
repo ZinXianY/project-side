@@ -23,6 +23,7 @@ router.get('/logout', userController.logout)
 router.get('/characters/:id', authenticated, characterController.getCharacter)
 router.get('/characters', authenticated, characterController.getCharacters)
 
+router.get('/users/:id', authenticated, userController.getUser)
 router.post('/like/:characterId', authenticated, userController.addLike)
 router.delete('/like/:characterId', authenticated, userController.removeLike)
 

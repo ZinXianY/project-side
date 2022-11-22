@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const { User, Character, Like } = require('../models')
+const { User, Character, Like, Category } = require('../models')
 
 const userController = {
     signUpPage: (req, res) => {
@@ -37,6 +38,24 @@ const userController = {
       if (err) {return next(err)}
     })
     res.redirect('/signin')
+  },
+
+  //user profile
+  getUser: (req, res) => {
+    return User.findByPk(req.params.id, {
+      include: [
+        { model: Character, as: 'LikedCharacters', include: [Category] }
+      ]
+    })
+      .then(user => {
+        user = user.toJSON()
+        const likedCharactersId = req.user && req.user.LikedCharacters.map(lc => lc.id)
+        user.LikedCharacters = user.LikedCharacters.map(r => ({
+          ...r,
+          isLiked: likedCharactersId.includes(r.id)
+        }))
+        return res.render('profile', { user })
+      })
   },
   addLike: (req, res, next) => {
     const { characterId } = req.params

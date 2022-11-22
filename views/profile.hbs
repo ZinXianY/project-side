@@ -1,0 +1,100 @@
+<header>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light px-4" style="background-color: #DAA520">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand text-white" style="font-weight: bold;">Gundam Characters</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/characters">
+              <i class="fas fa-undo-alt"></i>
+              <span class="text-white" style="font-weight: bold;">回首頁</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link-avatar">
+              {{#if user.avatar}}
+              <img class="user-avatar" src="{{user.avatar}}" alt="">
+              {{else}}
+              <img class="user-avatar" src="https://i.imgur.com/iuHA5Qi.jpg">
+              {{/if}}
+              <span class="text-white" style="font-weight: bold;">{{user.name}}</span>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="text-white" style="font-weight: bold;">登出</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="chs-title mb-3">個人資料</div>
+<div class="profile-card" style="border-radius: 10px;">
+  <div class="row">
+    <div class="profile-avatar col-md-3">
+      {{#if user.avatar}}
+      <img class="img-fluid" id="avatar-profile" src="{{user.avatar}}" alt="...">
+      {{else}}
+      <img class="img-fluid" id="avatar-profile" src="https://i.imgur.com/iuHA5Qi.jpg">
+      {{/if}}
+    </div>
+
+    <div class="profile-body col-md-9">
+      <div class="user-name" style="font-size: 26px;">{{user.name}}</div>
+      <div class="user-email">{{user.email}}</div>
+      <br>
+      <br>
+      <br>
+      <div class="btn btn-primary" id="profile" data-bs-toggle="modal" data-bs-target="#profile-edit">編輯個人資料</div>
+    </div>
+  </div>
+  <hr>
+  {{> profile-modal}}
+
+  <div class="chs-title mb-3">已收藏清單</div>
+  {{#if user.LikedCharacters}}
+  {{#each user.LikedCharacters}}
+  <div class="card mt-4" id="chs-card">
+    <div class="img-body">
+      <a href="/characters/{{this.id}}">
+        <img src="{{this.image}}" class="card-img-top" alt="...">
+      </a>
+      {{#if isLiked}}
+      <form action="/like/{{this.id}}?_method=DELETE" method="POST">
+        <button class="unlike-button" type="submit">
+          <i class="fa fa-heart"></i>
+        </button>
+      </form>
+      {{else}}
+      <form action="/like/{{this.id}}" method="POST">
+        <button class="like-button" type="submit">
+          <i class="fa fa-heart" id="btn-heart"></i>
+        </button>
+      </form>
+
+      {{/if}}
+    </div>
+    <a href="/characters/{{this.id}}">
+      <img src="{{this.avatar}}" class="chs-avatar-img" alt="...">
+    </a>
+    <div class="card-body" id="chs-body">
+      <div class="card-title" style="font-size: 24px;">{{this.name}}</div>
+      <div class="card-year">{{this.year}}年</div>
+      <div class="card-avatarName">{{this.avatarName}}</div>
+      <div class="card-category">{{this.Category.name}}</div>
+      <div class="card-description">{{this.description}}</div>
+    </div>
+  </div>
+  {{/each}}
+  <hr>
+  {{else}}
+  <div class="text-white">還沒有開始收藏喔!</div>
+  {{/if}}
