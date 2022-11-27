@@ -8,6 +8,15 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#header-bg {
+    background: linear-gradient(45deg, lightskyblue, gainsboro);
+}
+
+@media screen and (max-width: 990px) {
+    .search-bar {
+        margin: 10px 0px 10px 0px;
+    }
+}
 #ch-btn {
     position: absolute;
     bottom: 5px;
