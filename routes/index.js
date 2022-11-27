@@ -24,6 +24,8 @@ router.get('/logout', userController.logout)
 router.get('/characters/:id', authenticated, characterController.getCharacter)
 router.get('/characters', authenticated, characterController.getCharacters)
 
+router.get('/search', authenticated, userController.getSearch)
+
 router.get('/users/:id', authenticated, userController.getUser)
 router.get('/api/users/:id', authenticated, userController.editUser)
 router.post('/api/users/:id', upload.single('avatar'), authenticated, userController.putUser)

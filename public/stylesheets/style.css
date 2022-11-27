@@ -17,6 +17,13 @@ body {
         margin: 10px 0px 10px 0px;
     }
 }
+
+#search-input {
+    background: whitesmoke;
+    font-weight: bold;
+}
+
+
 #ch-btn {
     position: absolute;
     bottom: 5px;
@@ -44,7 +51,7 @@ body {
 }
 
 hr {
-    color: burlywood;
+    color: lightskyblue;
     border: 2px solid;
 }
 
@@ -78,7 +85,7 @@ hr {
 .chs-title {
     font-size: 30px;
     font-weight: bold;
-    color: burlywood;
+    color: gainsboro;
 }
 
 .chs-row {
@@ -129,6 +136,11 @@ hr {
 #chs-body {
     font-size: 18px;
     font-weight: bold;
+}
+
+#category-toggler {
+    width: 1000px;
+    background: linear-gradient(45deg, lightskyblue, gainsboro);
 }
 
 #chs-category {

@@ -3,13 +3,13 @@ const { localFileHandler } = require('../helpers/file-helpers')
 const { User, Character, Like, Category } = require('../models')
 
 const userController = {
-    signUpPage: (req, res) => {
-        res.render('signup')
-    },
-    signUp: (req, res) => {
-      const { name, email, password } = req.body
-      const errors = []
-      User.findOne({ where: { email } })
+  signUpPage: (req, res) => {
+    res.render('signup')
+  },
+  signUp: (req, res) => {
+    const { name, email, password } = req.body
+    const errors = []
+    User.findOne({ where: { email } })
       .then(user => {
         if (user) {
           errors.push({ message: '信箱已重複註冊!' })
@@ -21,7 +21,7 @@ const userController = {
             email,
             password: bcrypt.hashSync(password, 10)
           })
-          .then((user) => res.redirect('/signin'))
+            .then((user) => res.redirect('/signin'))
         }
       })
   },
@@ -35,7 +35,7 @@ const userController = {
   logout: (req, res) => {
     req.flash('success_messages', '登出成功!')
     req.logout(err => {
-      if (err) {return next(err)}
+      if (err) { return next(err) }
     })
     res.redirect('/signin')
   },
@@ -59,10 +59,10 @@ const userController = {
   },
   editUser: (req, res, next) => {
     return User.findByPk(req.params.id)
-    .then(user => {
-      res.json(user.toJSON())
-    })
-    .catch(err => next(err))
+      .then(user => {
+        res.json(user.toJSON())
+      })
+      .catch(err => next(err))
   },
   putUser: (req, res, next) => {
     const { name } = req.body
@@ -71,17 +71,17 @@ const userController = {
       User.findByPk(req.params.id),
       localFileHandler(file)
     ])
-    .then(([user, filePath]) => {
-      return user.update({
-        name,
-        avatar: filePath || user.avatar
+      .then(([user, filePath]) => {
+        return user.update({
+          name,
+          avatar: filePath || user.avatar
+        })
       })
-    })
-    .then(() => {
-      req.flash('success_messages', '個人資料更新成功!')
-      res.redirect('back')
-    })
-    .catch(err => next(err))
+      .then(() => {
+        req.flash('success_messages', '個人資料更新成功!')
+        res.redirect('back')
+      })
+      .catch(err => next(err))
   },
 
   addLike: (req, res, next) => {
@@ -115,14 +115,45 @@ const userController = {
         characterId
       }
     })
-    .then(like => {
-      return like.destroy()
-    })
-    .then(() => {
-      req.flash('error_messages', '已移除收藏清單!')
-      res.redirect('back')
-    })
-    .catch(err => next(err))
+      .then(like => {
+        return like.destroy()
+      })
+      .then(() => {
+        req.flash('error_messages', '已移除收藏清單!')
+        res.redirect('back')
+      })
+      .catch(err => next(err))
+  },
+  getSearch: (req, res, next) => {
+    const keyword = req.query.keyword
+
+    Promise.all([
+      Character.findAll({
+        raw: true,
+        nest: true,
+        include: [Category]
+      }),
+      Category.findAll({ raw: true })
+    ])
+      .then(([characters, categories]) => {
+        const likedCharactersId = req.user && req.user.LikedCharacters.map(lc => lc.id)
+
+        const data = characters.map(c => ({
+          ...c,
+          isLiked: likedCharactersId.includes(c.id)
+        }))
+        
+        const search = data.filter(d => {
+          if (!keyword.length) throw new Error('請輸入機體名稱!')
+          return d.name.toLowerCase().includes(keyword.toLowerCase())
+        })
+        return res.render('search', {
+          characters: search,
+          categories,
+          keyword
+        })
+      })
+      .catch(err => next(err))
   }
 }
 

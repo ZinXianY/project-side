@@ -2,6 +2,7 @@
   <nav class="navbar navbar-expand-lg fixed-top navbar-light px-4" id="header-bg">
     <div class="container-fluid">
       <a href="/" class="navbar-brand text-white" style="font-weight: bold;">Gundam Characters</a>
+      {{#if user}}
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,15 +15,33 @@
               <span class="text-white" style="font-weight: bold;">回首頁</span>
             </a>
           </li>
+
           <li class="nav-item">
-            <div class="nav-link-avatar">
+            <div class="search-bar mx-2">
+              <form action="/search">
+                <div class="input-group">
+                  <input type="text" name="keyword" class="form-control" id="search-input" placeholder="請輸入機體名稱"
+                    aria-label="Character Name..." value="{{keyword}}" aria-describedby="search-button">
+
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" id="search-button">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link-avatar" href="/users/{{user.id}}" style="text-decoration: none;">
               {{#if user.avatar}}
               <img class="user-avatar" src="{{user.avatar}}" alt="">
               {{else}}
               <img class="user-avatar" src="https://i.imgur.com/iuHA5Qi.jpg">
               {{/if}}
               <span class="text-white" style="font-weight: bold;">{{user.name}}</span>
-            </div>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout">
@@ -32,36 +51,23 @@
           </li>
         </ul>
       </div>
+      {{/if}}
     </div>
   </nav>
 </header>
 
-<div class="chs-title mb-3">個人資料</div>
-<div class="profile-card" style="border-radius: 10px;">
-  <div class="row">
-    <div class="profile-avatar col-md-3">
-      {{#if user.avatar}}
-      <img class="img-fluid" id="avatar-profile" src="{{user.avatar}}" alt="...">
-      {{else}}
-      <img class="img-fluid" id="avatar-profile" src="https://i.imgur.com/iuHA5Qi.jpg">
-      {{/if}}
-    </div>
+<div class="chs-title">Characters</div>
+<br>
+{{#if characters.length}}
+<div class="text-white">搜尋結果為 {{characters.length}} 筆資料!</div>
+{{else}}
+<div class="text-white">輸入的關鍵字: {{keyword}} 沒有符合條件的資料!</div>
+{{/if}}
+<hr>
 
-    <div class="profile-body col-md-9">
-      <div class="user-name" style="font-size: 26px;">{{user.name}}</div>
-      <div class="user-email">{{user.email}}</div>
-      <br>
-      <br>
-      <br>
-      <div class="btn btn-primary" id="profile" data-bs-toggle="modal" data-bs-target="#profile-edit">編輯個人資料</div>
-    </div>
-  </div>
-  <hr>
-  {{> profile-modal}}
-
-  <div class="chs-title mb-3">已收藏清單</div>
-  {{#if user.LikedCharacters}}
-  {{#each user.LikedCharacters}}
+<div class="chs-row">
+  {{#if characters}}
+  {{#each characters}}
   <div class="card mt-4" id="chs-card">
     <div class="img-body">
       <a href="/characters/{{this.id}}">
@@ -93,8 +99,11 @@
       <div class="card-description">{{this.description}}</div>
     </div>
   </div>
+
   {{/each}}
-  <hr>
-  {{else}}
-  <div class="text-white">還沒有開始收藏喔!</div>
-  {{/if}}
+
+</div>
+<hr>
+
+{{else}}
+{{/if}}

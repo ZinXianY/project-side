@@ -1,5 +1,4 @@
 <header>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light px-4" style="background-color: #DAA520">
     <nav class="navbar navbar-expand-lg fixed-top navbar-light px-4" id="header-bg">
         <div class="container-fluid">
             <a href="/" class="navbar-brand text-white" style="font-weight: bold;">Gundam Characters</a>
@@ -10,6 +9,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <div class="search-bar mx-2">
+                            <form action="/search">
+                                <div class="input-group">
+                                    <input type="text" name="keyword" class="form-control" id="search-input"
+                                        placeholder="請輸入機體名稱" aria-label="Character Name..." value="{{keyword}}"
+                                        aria-describedby="search-button">
+
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit" id="search-button">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+
                     {{#if user.isAdmin}}
                     <li class="nav-item">
                         <a href="/admin" class="nav-link">
