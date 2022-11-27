@@ -11,17 +11,27 @@
   </li>
 </ul>
 
-<ul class="nav nav-pills">
-  <li class="nav-item" id="chs-category">
-    <a class="nav-link {{#ifCond '' categoryId}}active{{/ifCond}}" href="?categoryId=">全部</a>
-  </li>
-  {{#each categories}}
-  <li class="nav-item" id="chs-category">
-    <a class="nav-link {{#ifCond this.id ../categoryId}}active{{/ifCond}}"
-      href="?categoryId={{this.id}}">{{this.name}}</a>
-  </li>
-  {{/each}}
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#categoryCollapse"
+      aria-controls="categoryCollapse" aria-expanded="false" aria-label="Toggle navigation" id="category-toggler">
+      <i class="fas fa-sort-down"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="categoryCollapse">
+      <ul class="nav nav-pills">
+        <li class="nav-item" id="chs-category">
+          <a class="nav-link {{#ifCond '' categoryId}}active{{/ifCond}}" href="?categoryId=">全部</a>
+        </li>
+        {{#each categories}}
+        <li class="nav-item" id="chs-category">
+          <a class="nav-link {{#ifCond this.id ../categoryId}}active{{/ifCond}}"
+            href="?categoryId={{this.id}}">{{this.name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</nav>
 <br>
 
 <div class="chs-row">
