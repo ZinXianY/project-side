@@ -283,3 +283,67 @@ hr {
     height: 2.5rem;
     width: 2.5rem;
 }
+
+.hide {
+    display: none;
+}
+
+#current-avatar {
+    height: 200px;
+    width: 300px;
+    opacity: 0.9;
+}
+
+#avatar-preview {
+    height: 200px;
+    width: 300px;
+    opacity: 0.6;
+}
+
+#avatar-wrapper {
+    position: relative;
+}
+
+.fa-camera {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.fa-camera:hover {
+    color: gainsboro;
+    cursor: pointer;
+}
+
+#delete-btn {
+    position: absolute;
+    top: 30px;
+    left: 280px;
+}
+
+.profile-save {
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(45deg, lightskyblue, gainsboro);
+    transform: scale(1.0);
+}
+
+.profile-save:hover {
+    transform: scale(1.1);
+}
+.modal-header {
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 2px solid silver;
+    background: linear-gradient(-90deg, lightskyblue, gainsboro);
+}
+.modal-body {
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(-90deg, lightskyblue, gainsboro);
+}
+.modal-footer {
+    border-top: 2px solid silver;
+}

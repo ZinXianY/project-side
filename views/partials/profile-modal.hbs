@@ -9,21 +9,33 @@
         </div>
 
         <div class="modal-body">
+          <div class="row">
+            <div class="avatar-wrapper" id="avatar-wrapper">
+              {{#if user.avatar}}
+              <img class="avatar" id="current-avatar" src="{{user.avatar}}">
+              {{else}}
+              <img class="avatar" id="current-avatar" src="https://i.imgur.com/iuHA5Qi.jpg">
+              {{/if}}
+            </div>
+            <div class="form-row mb-2">
+              <label for="avatar-input"><i class="fas fa-camera"></i>
+                <input type="file" class="form-control-file hide" name="avatar" id="avatar-input">
+              </label>
+              <button type="button" class="btn-close hide" id="delete-btn" aria-label="Close"></button>
+            </div>
+            
+            
 
-          <div class="form-row mb-2">
-            <label for="name">名稱</label>
-            <input class="form-control" type="text" name="name" id="name" placeholder="輸入名稱" value="{{user.name}}"
-              required>
-          </div>
-
-          <div class="form-row mb-2">
-            <label class="form-label" for="avatar">照片</label>
-            <input class="form-control" type="file" id="avatar" name="avatar">
+            <div class="form-row  col-md-9">
+              <label for="name">名稱</label>
+              <input class="form-control" type="text" name="name" id="name" placeholder="輸入名稱" value="{{user.name}}"
+                required>
+            </div>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">儲存</button>
+          <button type="submit" class="btn profile-save">儲存</button>
         </div>
       </div>
     </form>
