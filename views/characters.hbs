@@ -34,43 +34,45 @@
 </nav>
 <br>
 
-<div class="chs-row">
-  {{#if characters}}
-  {{#each characters}}
-  <div class="card mt-4" id="chs-card">
-    <div class="img-body">
+<div class="chs-container">
+  <div class="chs-row">
+    {{#if characters}}
+    {{#each characters}}
+    <div class="card mt-4" id="chs-card">
+      <div class="img-body">
+        <a href="/characters/{{this.id}}">
+          <img src="{{this.image}}" class="card-img-top" alt="...">
+        </a>
+        {{#if isLiked}}
+        <form action="/like/{{this.id}}?_method=DELETE" method="POST">
+          <button class="unlike-button" type="submit">
+            <i class="fa fa-heart"></i>
+          </button>
+        </form>
+        {{else}}
+        <form action="/like/{{this.id}}" method="POST">
+          <button class="like-button" type="submit">
+            <i class="fa fa-heart" id="btn-heart"></i>
+          </button>
+        </form>
+
+        {{/if}}
+      </div>
       <a href="/characters/{{this.id}}">
-        <img src="{{this.image}}" class="card-img-top" alt="...">
+        <img src="{{this.avatar}}" class="chs-avatar-img" alt="...">
       </a>
-      {{#if isLiked}}
-      <form action="/like/{{this.id}}?_method=DELETE" method="POST">
-        <button class="unlike-button" type="submit">
-          <i class="fa fa-heart"></i>
-        </button>
-      </form>
-      {{else}}
-      <form action="/like/{{this.id}}" method="POST">
-        <button class="like-button" type="submit">
-          <i class="fa fa-heart" id="btn-heart"></i>
-        </button>
-      </form>
+      <div class="card-body" id="chs-body">
+        <div class="card-title" style="font-size: 24px;">{{this.name}}</div>
+        <div class="card-year">{{this.year}}年</div>
+        <div class="card-avatarName">{{this.avatarName}}</div>
+        <div class="card-category">{{this.Category.name}}</div>
+        <div class="card-description">{{this.description}}</div>
+      </div>
+    </div>
 
-      {{/if}}
-    </div>
-    <a href="/characters/{{this.id}}">
-      <img src="{{this.avatar}}" class="chs-avatar-img" alt="...">
-    </a>
-    <div class="card-body" id="chs-body">
-      <div class="card-title" style="font-size: 24px;">{{this.name}}</div>
-      <div class="card-year">{{this.year}}年</div>
-      <div class="card-avatarName">{{this.avatarName}}</div>
-      <div class="card-category">{{this.Category.name}}</div>
-      <div class="card-description">{{this.description}}</div>
-    </div>
+    {{/each}}
+
   </div>
-
-  {{/each}}
-
 </div>
 <hr>
 

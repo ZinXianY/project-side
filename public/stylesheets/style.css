@@ -87,7 +87,9 @@ hr {
     font-weight: bold;
     color: gainsboro;
 }
-
+.chs-container {
+    padding-left: 40px;
+}
 .chs-row {
     display: flex;
     flex-wrap: wrap;
