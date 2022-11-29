@@ -1,30 +1,22 @@
-const avatarWrapper = document.querySelector('#avatar-wrapper')
-const avatarInput = document.querySelector('#avatar-input')
-const currentAvatar = document.querySelector('#current-avatar')
-const deleteAvatar = document.querySelector('#delete-btn')
+//image
+const imageWrapper = document.querySelector('#image-wrapper')
+const imageInput = document.querySelector('#image-input')
+const currentImage = document.querySelector('#current-image')
 
-avatarInput.addEventListener('change', function avatarPreview(event) {
+//image preview
+imageInput.addEventListener('change', function avatarPreview(event) {
   if (event.target.files.length !== 0) {
     const src = URL.createObjectURL(event.target.files[0])
     let previewArea = document.createElement('div')
     previewArea.innerHTML = `
-     <img src="${src}" class="avatar" id="avatar-preview">
+     <img src="${src}" class="image" id="image-preview">
     `
-
-    if (!currentAvatar.classList.contains('hide')) {
-      currentAvatar.classList.add('hide')
-      deleteAvatar.classList.remove('hide')
+    if (!currentImage.classList.contains('hide')) {
+      currentImage.classList.add('hide')
     }
-    if (avatarWrapper.children.length > 1) {
-      avatarWrapper.lastElementChild.remove()
+    if (imageWrapper.children.length > 1) {
+      imageWrapper.lastElementChild.remove()
     }
-    avatarWrapper.appendChild(previewArea)
+    imageWrapper.appendChild(previewArea)
   }
-})
-
-deleteAvatar.addEventListener('click', function deleteAvatarPreview() {
-  avatarInput.value = ""
-  avatarWrapper.lastElementChild.remove()
-  currentAvatar.classList.remove('hide')
-  deleteAvatar.classList.add('hide')
 })

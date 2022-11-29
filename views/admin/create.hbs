@@ -1,49 +1,60 @@
 <form action="/admin/characters" method="POST" enctype="multipart/form-data">
-  <div class="mb-4 text-center">
-    <h1 class="h3 font-weight-normal mb-3">新增角色</h1>
-  </div>
-  <div class="form-row mb-3">
-    <label class="form-label" for="name">機體名稱</label>
-    <input class="form-control" type="text" name="name" id="name" placeholder="輸入名稱" required>
-  </div>
+  <div class="create-body">
+    <div class="text-center mb-2 mt-2">
+      <div class="create-title">新增角色</div>
+    </div>
 
-  <div class="form-row mb-3">
-    <label class="form-label" for="year">登場年份</label>
-    <input class="form-control" type="text" name="year" id="year" placeholder="輸入年份">
-  </div>
+    <div class="form-row mb-3 mx-3">
+      <label class="form-label" for="name">機體名稱</label>
+      <input class="form-control" type="text" name="name" id="name" placeholder="輸入名稱" required>
+    </div>
 
-  <div class="form-row mb-3">
-    <label class="form-label" for="avatarName">駕駛員名稱</label>
-    <input class="form-control" type="text" name="avatarName" id="avatarName" placeholder="輸入駕駛員名稱">
-  </div>
+    <div class="form-row mb-3 mx-3">
+      <label class="form-label" for="year">登場年份</label>
+      <input class="form-control" type="text" name="year" id="year" placeholder="輸入年份">
+    </div>
 
-  <div class="form-row mb-3">
-    <label class="form-label" for="categoryId">作品系列</label>
-    <select class="form-control" name="categoryId" id="categoryId">
-      {{#each categories}}
-      <option value="{{this.id}}">{{this.name}}</option>
-      {{/each}}
-    </select>
-  </div>
+    <div class="form-row mb-3 mx-3">
+      <label class="form-label" for="avatarName">駕駛員名稱</label>
+      <input class="form-control" type="text" name="avatarName" id="avatarName" placeholder="輸入駕駛員名稱">
+    </div>
 
-  <div class="form-row mb-3">
-    <label class="form-label" for="description">簡介</label>
-    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-  </div>
+    <div class="form-row mb-3 mx-3">
+      <label class="form-label" for="categoryId">作品系列</label>
+      <select class="form-control" name="categoryId" id="categoryId">
+        {{#each categories}}
+        <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
 
-  <div class="form-row mb-3">
-    <label class="form-label" for="avatar">駕駛員圖片</label>
-    <input class="form-control" type="file" id="avatar" name="avatar">
-  </div>
+    <div class="form-row mb-3 mx-3">
+      <label class="form-label" for="description">簡介</label>
+      <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+    </div>
 
-  <div class="form-row mb-3">
-    <label class="form-label" for="image">機體圖片</label>
-    <input class="form-control" type="file" id="image" name="image">
-  </div>
+    <div class="form-row mb-3 mx-3">
+      <label class="form-label" for="avatar">駕駛員圖片</label>
+      <div class="avatar-wrapper" id="avatar-wrapper">
+        <img class="avatar hide" id="current-avatar" src="{{this.avatar}}">
+      </div>
+      <input class="form-control" type="file" id="avatar-input" name="avatar">
+    </div>
 
-  <button type="submit" class="btn btn-primary">確定</button>
-  <a href="javascript:history.back()" class="btn btn-success mx-2">
-    <i class="fas fa-undo-alt"></i>
-    <span>返回</span>
-  </a>
+    <div class="form-row mb-3 mx-3">
+      <label class="form-label" for="image">機體圖片</label>
+      <div class="image-wrapper" id="image-wrapper">
+        <img class="image hide" id="current-image" src="{{this.avatar}}">
+      </div>
+      <input class="form-control" type="file" id="image-input" name="image">
+    </div>
+
+    <div class="create-button d-flex justify-content-center mb-3">
+      <button type="submit" class="create-sumbit">確定</button>
+      <a href="/admin/characters" class="create-back mx-2">
+        <i class="fas fa-undo-alt"></i>
+        <span>返回</span>
+      </a>
+    </div>
+  </div>
 </form>
