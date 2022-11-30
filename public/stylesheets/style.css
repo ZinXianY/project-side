@@ -23,17 +23,12 @@ body {
     font-weight: bold;
 }
 
-
-#ch-btn {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-}
-
 .card {
     margin-top: 6%;
     height: 600px;
-    border: 2px solid burlywood;
+    border: 2px solid silver;
+    border-radius: 15px;
+    background: linear-gradient(-45deg, lightskyblue, gainsboro);
 }
 
 .img-fluid {
@@ -48,10 +43,11 @@ body {
     margin-top: 1%;
     font-size: 50px;
     font-weight: bold;
+    color: whitesmoke;
 }
 
 hr {
-    color: lightskyblue;
+    color: whitesmoke;
     border: 2px solid;
 }
 
@@ -69,7 +65,8 @@ hr {
     .avatar-img {
         height: 300px;
         width: 40%;
-        border-radius: 50%;
+        border-radius: 20px;
+        object-fit: cover;
     }
 
     .card-text {
@@ -79,6 +76,26 @@ hr {
         font-weight: bold;
         margin-top: 5%;
         margin-left: 5%;
+        color: whitesmoke;
+    }
+
+    .ch-back {
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        background: linear-gradient(-45deg, silver, whitesmoke);
+        text-decoration: none;
+        color: black;
+        border-radius: 10px;
+        padding: 0 15px 0 15px;
+        transform: scale(1.0);
+    }
+
+    .ch-back:hover {
+        color: black;
+        transform: scale(1.1);
     }
 }
 
@@ -87,9 +104,13 @@ hr {
     font-weight: bold;
     color: gainsboro;
 }
-.chs-container {
-    padding-left: 40px;
+
+@media screen and (max-width: 990px) {
+    .chs-container {
+        padding-left: 40px;
+    }
 }
+
 .chs-row {
     display: flex;
     flex-wrap: wrap;
@@ -365,11 +386,13 @@ hr {
     border-radius: 10px;
     background: linear-gradient(-90deg, lightskyblue, gainsboro);
 }
+
 .create-title {
     font-size: 36px;
     font-weight: bold;
     color: whitesmoke;
 }
+
 .create-sumbit {
     font-size: 18px;
     font-weight: bold;
@@ -379,9 +402,11 @@ hr {
     padding: 0 15px 0 15px;
     transform: scale(1.0);
 }
+
 .create-sumbit:hover {
     transform: scale(1.1);
 }
+
 .create-back {
     font-size: 18px;
     font-weight: bold;
@@ -392,10 +417,12 @@ hr {
     padding: 0 15px 0 15px;
     transform: scale(1.0);
 }
+
 .create-back:hover {
     transform: scale(1.1);
     color: black;
 }
+
 #image-preview {
     height: 200px;
     width: 300px;
