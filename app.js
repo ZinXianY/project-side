@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+
 const path = require('path')
 const express = require('express')
 const exphbs = require('express-handlebars')
@@ -10,15 +14,14 @@ const { getUser } = require('./helpers/auth-helpers')
 const routes = require('./routes')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 const app = express()
-const port = process.env.PORT || 3000
-const SESSION_SECRET = 'secret'
+const port = process.env.PORT
 
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs', helpers: handlebarsHelpers }))
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
-app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: false}))
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false}))
 app.use(passport.initialize()) //初始化 Passport
 app.use(passport.session()) //啟動 Session
 app.use(flash())

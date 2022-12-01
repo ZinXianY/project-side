@@ -10,6 +10,7 @@ const { generalErrorHandler } = require('../middleware/error-handler')
 const upload = require('../middleware/multer')
 
 const admin = require('./modules/admin')
+const auth = require('./modules/auth')
 
 router.use('/admin', authenticatedAdmin, admin)//收到有關/admin的路徑一律給後臺專用modules處理
 
@@ -32,6 +33,8 @@ router.post('/api/users/:id', upload.single('avatar'), authenticated, userContro
 
 router.post('/like/:characterId', authenticated, userController.addLike)
 router.delete('/like/:characterId', authenticated, userController.removeLike)
+
+router.use('/auth', auth)
 
 router.use('/', (req, res) => res.redirect('/characters'))
 

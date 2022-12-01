@@ -8,6 +8,82 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.signin-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.signin-button {
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+    color: whitesmoke;
+    background: linear-gradient(45deg, #0D6EFD, whitesmoke);
+    border-radius: 15px;
+}
+
+.signin-button:hover {
+    transform: scale(1.05);
+}
+
+.signin-button:active {
+    transform: scale(1);
+}
+
+.signup-button {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+    color: whitesmoke;
+    background: linear-gradient(45deg, red, whitesmoke);
+    border-radius: 15px;
+    text-decoration: none;
+    margin-top: 10px;
+    padding: 2px;
+}
+
+.signup-button:hover {
+    transform: scale(1.05);
+    color: whitesmoke;
+}
+
+.signup-button:active {
+    transform: scale(1);
+}
+
+.fa-facebook-square {
+    color: #0D6EFD;
+}
+
+.signin-facebook {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    background: linear-gradient(45deg, darkgray, whitesmoke);
+    border-radius: 15px;
+    padding: 2px 7px 2px 7px;
+}
+
+.signin-facebook:hover {
+    transform: scale(1.05);
+}
+
+.signin-facebook:active {
+    transform: scale(1);
+}
+
+.form-signin {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
 #header-bg {
     background: linear-gradient(45deg, lightskyblue, gainsboro);
 }
