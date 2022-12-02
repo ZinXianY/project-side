@@ -94,6 +94,7 @@ body {
     font-weight: bold;
     color: whitesmoke;
 }
+
 .signin-back-button {
     display: flex;
     justify-content: center;
@@ -107,10 +108,12 @@ body {
     margin-top: 10px;
     padding: 2px;
 }
+
 .signin-back-button:hover {
     transform: scale(1.05);
     color: whitesmoke;
 }
+
 .signin-back-button:active {
     transform: scale(1);
 }
@@ -507,11 +510,14 @@ hr {
     border-radius: 10px;
     border: none;
     padding: 0 15px 0 15px;
-    transform: scale(1.0);
 }
 
 .create-sumbit:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+.create-sumbit:active {
+    transform: scale(1);
 }
 
 .create-back {
@@ -522,12 +528,15 @@ hr {
     color: black;
     border-radius: 10px;
     padding: 0 15px 0 15px;
-    transform: scale(1.0);
 }
 
 .create-back:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     color: black;
+}
+
+.create-back:active {
+    transform: scale(1);
 }
 
 #image-preview {
