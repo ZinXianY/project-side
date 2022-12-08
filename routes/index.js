@@ -22,6 +22,8 @@ router.post('/signin', passport.authenticate('local', {failureRedirect: '/signin
 
 router.get('/logout', userController.logout)
 
+router.get('/characters/top', authenticated, characterController.getTopCharacters)
+
 router.get('/characters/:id', authenticated, characterController.getCharacter)
 router.get('/characters', authenticated, characterController.getCharacters)
 

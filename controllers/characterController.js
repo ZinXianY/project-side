@@ -1,4 +1,4 @@
-const { Character, Category } = require('../models')
+const { User, Character, Category } = require('../models')
 const { getOffset, getPagination } = require('../helpers/pagination-helper')
 
 const characterController = {
@@ -47,6 +47,26 @@ const characterController = {
         })
             .then(character => {
                 res.render('character', { character })
+            })
+            .catch(err => next(err))
+    },
+    getTopCharacters: (req, res, next) => {
+        return Character.findAll({
+            include: [
+                { model: User, as: 'LikedUsers' }
+            ]
+        })
+            .then(characters => {
+                const likedCharactersId = req.user && req.user.LikedCharacters.map(lc => lc.id)
+
+                const data = characters.map(c => ({
+                    ...c.dataValues,
+                    likedCount: c.dataValues.LikedUsers.length,
+                    isLiked: likedCharactersId.includes(c.id)
+                }))
+                    .sort((a, b) => b.likedCount - a.likedCount)
+                    .slice(0, 10)
+                res.render('topCharacters', { characters: data })
             })
             .catch(err => next(err))
     }

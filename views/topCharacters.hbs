@@ -1,0 +1,51 @@
+{{> header}}
+
+<div class="chs-title">Top Characters</div>
+
+<ul class="nav nav-tabs mt-4 mb-3">
+  <li class="nav-item" id="ch-tabs">
+    <a class="nav-link" href="/characters">首頁</a>
+  </li>
+  <li class="nav-ltem" id="ch-tabs">
+    <a class="nav-link active" href="#">人氣收藏</a>
+  </li>
+</ul>
+
+<div class="chs-container">
+  <div class="chs-row">
+    {{#each characters}}
+    <div class="card mt-4" id="chs-card">
+      <div class="img-body">
+        <a href="/characters/{{this.id}}">
+          <img src="{{this.image}}" class="card-img-top" alt="...">
+        </a>
+        {{#if isLiked}}
+        <form action="/like/{{this.id}}?_method=DELETE" method="POST">
+          <button class="unlike-button" type="submit">
+            <i class="fa fa-heart"></i>
+          </button>
+        </form>
+        {{else}}
+        <form action="/like/{{this.id}}" method="POST">
+          <button class="like-button" type="submit">
+            <i class="fa fa-heart" id="btn-heart"></i>
+          </button>
+        </form>
+
+        {{/if}}
+      </div>
+      <a href="/characters/{{this.id}}">
+        <img src="{{this.avatar}}" class="chs-avatar-img" alt="...">
+      </a>
+      <div class="card-body" id="chs-body">
+        <div class="card-title" style="font-size: 24px;">{{this.name}}</div>
+        <div class="card-avatarName">{{this.avatarName}}</div>
+        <div class="badge">收藏數: {{this.likedCount}}</div>
+      </div>
+    </div>
+
+    {{/each}}
+
+  </div>
+</div>
+<hr>
