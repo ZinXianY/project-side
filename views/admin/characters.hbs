@@ -98,15 +98,15 @@
       </a>
       <div class="card-body" id="chs-body">
         <div class="card-title" style="font-size: 24px;">{{this.name}}</div>
-        <div class="card-year">{{this.year}}年</div>
-        <div class="card-avatarName">{{this.avatarName}}</div>
-        <div class="card-category">{{this.Category.name}}</div>
-        <div class="card-description">{{this.description}}</div>
-        <div class="d-flex justify-content-end">
-          <div class="edit btn btn-primary mx-2" id="edit-btn" data-bs-toggle="modal"
+        <div class="card-year">登場: {{this.year}}年</div>
+        <div class="card-avatarName">駕駛: {{this.avatarName}}</div>
+        <div class="card-category">系列: {{this.Category.name}}</div>
+        <div class="card-description">簡介: {{this.description}}</div>
+        <div class="d-flex justify-content-end mt-3">
+          <div class="edit-modal mx-2" id="edit-btn" data-bs-toggle="modal"
             data-bs-target="#exampleModal-edit{{this.id}}">編輯</div>
           <form action="/admin/characters/{{this.id}}?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-danger"
+            <button type="submit" class="chs-delete"
               onclick="return confirm(`確定要刪除 {{ this.name }} 嗎?`)">刪除</button>
           </form>
         </div>

@@ -4,47 +4,55 @@
     <form action="/admin/api/characters/{{this.id}}" method="POST" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title">編輯角色資料</h1>
+          <div class="modal-title">{{this.name}}</div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
-          <div class="form-row mb-2">
-            <label class="form-label" for="name">機體名稱</label>
-            <input class="form-control" type="text" name="name" id="input-name" placeholder="輸入名稱" value="{{this.name}}"
-              required>
-          </div>
+          <div class="row">
 
-          <div class="form-row mb-2">
-            <label class="form-label" for="year">登場年份</label>
-            <input class="form-control" type="text" name="year" id="year" placeholder="輸入年份" value="{{this.year}}">
-          </div>
+            <div class="img-wrapper mb-5">
+              <img src="{{this.image}}" class="card-img-top" id="edit-img" alt="...">
+              <img src="{{this.avatar}}" class="modal-avatar-img" id="edit-avatar" alt="...">
+            </div>
 
-          <div class="form-row mb-2">
-            <label class="form-label" for="avatarName">駕駛員名稱</label>
-            <input class="form-control" type="text" name="avatarName" id="avatarName" placeholder="輸入駕駛員名稱"
-              value="{{this.avatarName}}">
-          </div>
+            <div class="form-row mb-2">
+              <label class="form-label" for="image">機體圖片</label>
+              <input class="form-control" type="file" id="image" name="image">
+            </div>
 
-          <div class="form-row mb-2">
-            <label class="form-label" for="description">簡介</label>
-            <textarea class="form-control" name="description" id="description" rows="3">{{this.description}}</textarea>
-          </div>
+            <div class="form-row mb-2">
+              <label class="form-label" for="avatar">駕駛員圖片</label>
+              <input class="form-control" type="file" id="avatar" name="avatar">
+            </div>
 
-          <div class="form-row mb-3">
-            <label class="form-label" for="avatar">駕駛員圖片</label>
-            <input class="form-control" type="file"  id="avatar" name="avatar">
-          </div>
+            <div class="form-row mb-2">
+              <label class="form-label" for="name">機體名稱</label>
+              <input class="form-control" type="text" name="name" id="input-name" placeholder="輸入名稱"
+                value="{{this.name}}" required>
+            </div>
 
-          <div class="form-row mb-3">
-            <label class="form-label" for="image">機體圖片</label>
-            <input class="form-control" type="file"  id="image" name="image">
+            <div class="form-row mb-2">
+              <label class="form-label" for="year">登場年份</label>
+              <input class="form-control" type="text" name="year" id="year" placeholder="輸入年份" value="{{this.year}}">
+            </div>
+
+            <div class="form-row mb-2">
+              <label class="form-label" for="avatarName">駕駛員名稱</label>
+              <input class="form-control" type="text" name="avatarName" id="avatarName" placeholder="輸入駕駛員名稱"
+                value="{{this.avatarName}}">
+            </div>
+
+            <div class="form-row mb-2">
+              <label class="form-label" for="description">簡介</label>
+              <textarea class="form-control" name="description" id="description"
+                rows="3">{{this.description}}</textarea>
+            </div>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">關閉</button>
-          <button type="sumbit" id="edit-save" class="btn btn-success">儲存</button>
+          <button type="sumbit" class="edit-save">儲存</button>
         </div>
       </div>
     </form>

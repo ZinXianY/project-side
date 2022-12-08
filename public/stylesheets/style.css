@@ -469,7 +469,7 @@ hr {
 }
 
 .modal-header {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     border-bottom: 2px solid silver;
     background: linear-gradient(-90deg, lightskyblue, gainsboro);
@@ -544,4 +544,73 @@ hr {
     width: 300px;
     opacity: 0.6;
     margin-bottom: 5px;
+}
+
+.edit-modal {
+    cursor: pointer;
+    background: linear-gradient(-45deg, #0D6EFD, whitesmoke);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 15px 0 15px;
+}
+
+.edit-modal:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+.edit-modal:active {
+    transform: scale(1);
+}
+
+.chs-delete {
+    background: linear-gradient(-45deg, red, whitesmoke);
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 15px 0 15px;
+}
+
+.chs-delete:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+.chs-delete:active {
+    transform: scale(1);
+}
+
+#edit-img {
+    height: 250px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    border: 2px solid silver;
+}
+
+#edit-avatar {
+    position: absolute;
+    width: 45%;
+    height: 100px;
+    right: 10px;
+    top: 200px;
+    border-radius: 20px;
+    border: 2px solid silver;
+    object-fit: cover;
+    object-position: 100% 25%;
+}
+.edit-save {
+    background: linear-gradient(-45deg, lightskyblue, whitesmoke);
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 15px 0 15px;
+}
+.edit-save:hover {
+    transform: scale(1.05);
+}
+.edit-save:active {
+    transform: scale(1);
 }
