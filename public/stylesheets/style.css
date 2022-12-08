@@ -200,12 +200,15 @@ hr {
         color: black;
         border-radius: 10px;
         padding: 0 15px 0 15px;
-        transform: scale(1.0);
     }
 
     .ch-back:hover {
         color: black;
-        transform: scale(1.1);
+        transform: scale(1.05);
+    }
+
+    .ch-back:active {
+        transform: scale(1)
     }
 }
 
@@ -600,6 +603,7 @@ hr {
     object-fit: cover;
     object-position: 100% 25%;
 }
+
 .edit-save {
     background: linear-gradient(-45deg, lightskyblue, whitesmoke);
     border-radius: 10px;
@@ -608,12 +612,15 @@ hr {
     font-weight: bold;
     padding: 0 15px 0 15px;
 }
+
 .edit-save:hover {
     transform: scale(1.05);
 }
+
 .edit-save:active {
     transform: scale(1);
 }
+
 .badge {
     background: linear-gradient(45deg, silver, whitesmoke);
     color: black;
