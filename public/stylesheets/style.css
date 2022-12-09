@@ -675,8 +675,9 @@ hr {
 .badge {
     background: linear-gradient(45deg, silver, whitesmoke);
     color: black;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     border-radius: 10px;
     margin-top: 5px;
+    margin-bottom: 5px;
 }
