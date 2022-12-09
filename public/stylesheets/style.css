@@ -301,6 +301,22 @@ hr {
     background-color: lightskyblue;
 }
 
+.category-save {
+    background: linear-gradient(45deg, #198754, whitesmoke);
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.category-save:hover {
+    transform: scale(1.05);
+}
+
+.category-save:active {
+    transform: scale(1);
+}
+
 #category-delete {
     border: 2px solid silver;
     border-radius: 6.5px;
@@ -501,6 +517,7 @@ hr {
 .profile-save:hover {
     transform: scale(1.05);
 }
+
 .profile-save:active {
     transform: scale(1);
 }
