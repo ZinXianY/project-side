@@ -395,6 +395,21 @@ hr {
     background: transparent;
 }
 
+@media screen and (max-width: 770px) {
+    .edit-profile {
+        display: flex;
+        justify-content: end;
+    }
+
+    .profile-body {
+        padding-left: 70px;
+    }
+
+    .profile-avatar {
+        padding-left: 70px;
+    }
+}
+
 .profile-card {
     max-width: 1200px;
 }
@@ -411,6 +426,22 @@ hr {
     font-weight: bold;
     margin-top: 20px;
     color: whitesmoke;
+}
+
+#profile {
+    background: linear-gradient(45deg, lightskyblue, gainsboro);
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#profile:hover {
+    transform: scale(1.05);
+    color: whitesmoke;
+}
+
+#profile:active {
+    transform: scale(1);
 }
 
 .user-avatar {
@@ -464,11 +495,14 @@ hr {
     font-size: 18px;
     font-weight: bold;
     background: linear-gradient(45deg, lightskyblue, gainsboro);
-    transform: scale(1.0);
+    border-radius: 10px;
 }
 
 .profile-save:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+.profile-save:active {
+    transform: scale(1);
 }
 
 .modal-header {
