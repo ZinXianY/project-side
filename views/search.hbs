@@ -59,49 +59,55 @@
 <div class="chs-title">Characters</div>
 <br>
 {{#if characters.length}}
-<div class="text-white">搜尋結果為 {{characters.length}} 筆資料!</div>
+<div class="reminder d-flex justify-content-center">
+  <div class="search-reminder">搜尋結果為 {{characters.length}} 筆資料!</div>
+</div>
 {{else}}
-<div class="text-white">輸入的關鍵字: {{keyword}} 沒有符合條件的資料!</div>
+<div class="reminder d-flex justify-content-center">
+  <div class="search-reminder">尚未查詢到: {{keyword}} 的相關資料!</div>
+</div>
 {{/if}}
 <hr>
+<div class="chs-container">
+  <div class="chs-row">
+    {{#if characters}}
+    {{#each characters}}
+    <div class="card mt-4" id="chs-card">
+      <div class="img-body">
+        <a href="/characters/{{this.id}}">
+          <img src="{{this.image}}" class="card-img-top" alt="...">
+        </a>
+        {{#if isLiked}}
+        <form action="/like/{{this.id}}?_method=DELETE" method="POST">
+          <button class="unlike-button" type="submit">
+            <i class="fa fa-heart"></i>
+          </button>
+        </form>
+        {{else}}
+        <form action="/like/{{this.id}}" method="POST">
+          <button class="like-button" type="submit">
+            <i class="fa fa-heart" id="btn-heart"></i>
+          </button>
+        </form>
 
-<div class="chs-row">
-  {{#if characters}}
-  {{#each characters}}
-  <div class="card mt-4" id="chs-card">
-    <div class="img-body">
+        {{/if}}
+      </div>
       <a href="/characters/{{this.id}}">
-        <img src="{{this.image}}" class="card-img-top" alt="...">
+        <img src="{{this.avatar}}" class="chs-avatar-img" alt="...">
       </a>
-      {{#if isLiked}}
-      <form action="/like/{{this.id}}?_method=DELETE" method="POST">
-        <button class="unlike-button" type="submit">
-          <i class="fa fa-heart"></i>
-        </button>
-      </form>
-      {{else}}
-      <form action="/like/{{this.id}}" method="POST">
-        <button class="like-button" type="submit">
-          <i class="fa fa-heart" id="btn-heart"></i>
-        </button>
-      </form>
+      <div class="card-body" id="chs-body">
+        <div class="card-title" style="font-size: 24px;">{{this.name}}</div>
+        <div class="card-avatarName">{{this.avatarName}}</div>
+        <div class="badge card-category">{{this.Category.name}}</div>
+      </div>
+    </div>
 
-      {{/if}}
-    </div>
-    <a href="/characters/{{this.id}}">
-      <img src="{{this.avatar}}" class="chs-avatar-img" alt="...">
-    </a>
-    <div class="card-body" id="chs-body">
-      <div class="card-title" style="font-size: 24px;">{{this.name}}</div>
-      <div class="card-avatarName">{{this.avatarName}}</div>
-      <div class="badge card-category">{{this.Category.name}}</div>
-    </div>
+    {{/each}}
+
   </div>
-
-  {{/each}}
-
 </div>
 <hr>
 
 {{else}}
+<i class="fas fa-search-minus"></i>
 {{/if}}

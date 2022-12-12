@@ -54,7 +54,8 @@
       <br>
       <br>
       <div class="edit-profile">
-      <div class="btn edit-profile-button" id="profile" data-bs-toggle="modal" data-bs-target="#profile-edit">編輯個人資料</div>
+        <div class="btn edit-profile-button" id="profile" data-bs-toggle="modal" data-bs-target="#profile-edit">編輯個人資料
+        </div>
       </div>
     </div>
   </div>
@@ -100,7 +101,10 @@
   </div>
   <hr>
   {{else}}
-  <div class="text-white">還沒有開始收藏喔!</div>
+  <i class="far fa-file-alt"></i>
+  <div class="reminder d-flex justify-content-center">
+    <div class="reminder-sign">還沒有開始收藏喔!</div>
+  </div>
   {{/if}}
 
   {{> profile-modal}}
