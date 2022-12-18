@@ -620,6 +620,9 @@ hr {
 }
 
 .chs-delete {
+    position: absolute;
+    top: 15px;
+    left: 215px;
     background: linear-gradient(-45deg, red, whitesmoke);
     border-radius: 10px;
     border: none;

@@ -27,7 +27,8 @@ const adminController = {
         ])
             .then(([characters, categories]) => {
                 const data = characters.rows.map(r => ({
-                    ...r
+                    ...r,
+                    description: r.description.substring(0, 50)
                 }))
                 return res.render('admin/characters', {
                     characters: data,
