@@ -134,16 +134,13 @@ body {
 }
 
 .card {
-    margin-top: 6%;
-    height: 600px;
-    border: 2px solid silver;
-    border-radius: 15px;
-    background: linear-gradient(-45deg, lightskyblue, gainsboro);
+    border: none;
+    background: none;
 }
 
 .img-fluid {
-    height: 596px;
-    width: 600px;
+    height: 500px;
+    width: 900px;
     border-radius: 13px;
 }
 
@@ -190,9 +187,6 @@ hr {
     }
 
     .ch-back {
-        position: absolute;
-        right: 10px;
-        bottom: 5px;
         font-size: 18px;
         font-weight: bold;
         background: linear-gradient(-45deg, silver, whitesmoke);
@@ -502,6 +496,12 @@ hr {
     cursor: pointer;
 }
 
+.fa-camera.on-avatar {
+    position: absolute;
+    top: 210px;
+    left: 275px;
+}
+
 #delete-btn {
     position: absolute;
     top: 30px;
@@ -607,7 +607,7 @@ hr {
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
-    padding: 0 15px 0 15px;
+    padding: 0 20px 0 20px;
 }
 
 .edit-modal:hover {
@@ -637,14 +637,28 @@ hr {
     transform: scale(1);
 }
 
-#edit-img {
+.edit-img {
     height: 250px;
     width: 100%;
     border-radius: 15px 15px 0px 0px;
     border: 2px solid silver;
 }
 
-#edit-avatar {
+#edit-image-preview {
+    height: 250px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    border: 2px solid silver;
+    opacity: 0.6;
+}
+
+#edit-delete-img-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.edit-avatar {
     position: absolute;
     width: 45%;
     height: 100px;
@@ -654,6 +668,19 @@ hr {
     border: 2px solid silver;
     object-fit: cover;
     object-position: 100% 25%;
+}
+
+#edit-avatar-preview {
+    position: absolute;
+    width: 45%;
+    height: 100px;
+    right: 10px;
+    top: 200px;
+    border-radius: 20px;
+    border: 2px solid silver;
+    object-fit: cover;
+    object-position: 100% 25%;
+    opacity: 0.7;
 }
 
 .edit-save {

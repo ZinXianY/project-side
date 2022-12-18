@@ -1,23 +1,26 @@
 <div class="card">
   <div class="row g-0">
-    <div class="col-md-4">
+    <div class="card-title-ch">{{character.name}}</div>
+    <div class="character-image d-flex justify-content-center">
       <img src="{{character.image}}" class="img-fluid " alt="...">
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <div class="card-title-ch">{{character.name}}</div>
-        <hr />
+    <div class="card-body">
+      <hr />
 
-        <div class="section">
-          <img src="{{character.avatar}}" class="avatar-img" alt="...">
-          <div class="card-text">
-            <p class="avatar-name">{{character.avatarName}}</p><br>
-            <p class="card-year">登場: {{character.year}}年</p>
-            <p class="card-category">系列: {{character.Category.name}}</p>
-            <p class="card-description">簡介: {{character.description}}</p>
-          </div>
+      <div class="section">
+        <img src="{{character.avatar}}" class="avatar-img" alt="...">
+        <div class="card-text">
+          <p class="avatar-name">{{character.avatarName}}</p><br>
+          <p class="card-year">登場: {{character.year}}年</p>
+          <p class="card-category">系列: {{character.Category.name}}</p>
+          <p class="card-description">簡介: {{character.description}}</p>
         </div>
-        <a href="/admin/characters" class="ch-back">
+      </div>
+      <div class="d-flex justify-content-end">
+        <div class="edit-modal mx-2" id="edit-btn" data-bs-toggle="modal"
+          data-bs-target="#exampleModal-edit{{character.id}}">編輯
+        </div>
+        <a href="javascript:history.back()" class="ch-back">
           <i class="fas fa-undo-alt"></i>
           <span>返回</span>
         </a>
@@ -25,3 +28,5 @@
     </div>
   </div>
 </div>
+
+{{> edit-modal}}

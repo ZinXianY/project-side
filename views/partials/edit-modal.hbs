@@ -1,52 +1,61 @@
-<div class="modal fade" id="exampleModal-edit{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="edit-character"
-  style="display: none;" aria-hidden="true">
+<div class="modal fade" id="exampleModal-edit{{character.id}}" tabindex="-1" role="dialog"
+  aria-labelledby="edit-character" style="display: none;" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form action="/admin/api/characters/{{this.id}}" method="POST" enctype="multipart/form-data">
+    <form action="/admin/api/characters/{{character.id}}" method="POST" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header">
-          <div class="modal-title">{{this.name}}</div>
+          <div class="modal-title">{{character.name}}</div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
           <div class="row">
+            <div class="img-wrapper">
+              <div class="image-wrapper" id="edit-image-wrapper">
+                <img class="edit-img" id="edit-current-image" src="{{character.image}}">
+              </div>
 
-            <div class="img-wrapper mb-5">
-              <img src="{{this.image}}" class="card-img-top" id="edit-img" alt="...">
-              <img src="{{this.avatar}}" class="modal-avatar-img" id="edit-avatar" alt="...">
+              <div class="form-row mb-2">
+                <label for="edit-image-input"><i class="fas fa-camera"></i>
+                  <input type="file" class="form-control-file hide" name="image" id="edit-image-input">
+                </label>
+                <button type="button" class="btn-close hide" id="edit-delete-img-btn" aria-label="Close"></button>
+              </div>
+
+              <div class="avatar-wrapper" id="edit-avatar-wrapper">
+                <img class="edit-avatar" id="edit-current-avatar" src="{{character.avatar}}">
+              </div>
+
+              <div class="form-row mb-2">
+                <label for="edit-avatar-input"><i class="fas fa-camera on-avatar"></i>
+                  <input type="file" class="form-control-file hide" name="avatar" id="edit-avatar-input">
+                </label>
+              </div>
             </div>
 
-            <div class="form-row mb-2">
-              <label class="form-label" for="image">機體圖片</label>
-              <input class="form-control" type="file" id="image" name="image">
-            </div>
-
-            <div class="form-row mb-2">
-              <label class="form-label" for="avatar">駕駛員圖片</label>
-              <input class="form-control" type="file" id="avatar" name="avatar">
-            </div>
 
             <div class="form-row mb-2">
               <label class="form-label" for="name">機體名稱</label>
               <input class="form-control" type="text" name="name" id="input-name" placeholder="輸入名稱"
-                value="{{this.name}}" required>
+                value="{{character.name}}" required>
             </div>
 
             <div class="form-row mb-2">
               <label class="form-label" for="year">登場年份</label>
-              <input class="form-control" type="text" name="year" id="year" placeholder="輸入年份" value="{{this.year}}">
+              <input class="form-control" type="text" name="year" id="year" placeholder="輸入年份"
+                value="{{character.year}}">
             </div>
 
             <div class="form-row mb-2">
               <label class="form-label" for="avatarName">駕駛員名稱</label>
               <input class="form-control" type="text" name="avatarName" id="avatarName" placeholder="輸入駕駛員名稱"
-                value="{{this.avatarName}}">
+                value="{{character.avatarName}}">
             </div>
 
             <div class="form-row mb-2">
               <label class="form-label" for="description">簡介</label>
               <textarea class="form-control" name="description" id="description"
-                rows="3">{{this.description}}</textarea>
+                rows="3">{{character.description}}</textarea>
             </div>
           </div>
         </div>
