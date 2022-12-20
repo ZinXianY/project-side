@@ -321,7 +321,7 @@ hr {
     font-weight: bold;
 }
 
-#category-delete button:hover {
+#category-delete:hover {
     background-color: red;
 }
 
@@ -418,6 +418,12 @@ hr {
 
     .profile-avatar {
         padding-left: 70px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .nav-pills {
+        display: grid;
     }
 }
 
