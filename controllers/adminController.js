@@ -1,5 +1,5 @@
 const { Character, Category } = require('../models')
-const { localFileHandler } = require('../helpers/file-helpers')
+const { imgurFileHandler } = require('../helpers/file-helpers')
 const { getOffset, getPagination } = require('../helpers/pagination-helper')
 
 const adminController = {
@@ -54,10 +54,10 @@ const adminController = {
         let imageLink
 
         if (files.avatar) {
-            avatarLink = await localFileHandler(files.avatar[0])
+            avatarLink = await imgurFileHandler(files.avatar[0])
         }
         if (files.image) {
-            imageLink = await localFileHandler(files.image[0])
+            imageLink = await imgurFileHandler(files.image[0])
         }
 
         return Character.create({
@@ -107,10 +107,10 @@ const adminController = {
         let imageLink
 
         if (files.avatar) {
-            avatarLink = await localFileHandler(files.avatar[0])
+            avatarLink = await imgurFileHandler(files.avatar[0])
         }
         if (files.image) {
-            imageLink = await localFileHandler(files.image[0])
+            imageLink = await imgurFileHandler(files.image[0])
         }
 
         Character.findByPk(req.params.id)
