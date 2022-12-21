@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const { localFileHandler } = require('../helpers/file-helpers')
+const { imgurFileHandler } = require('../helpers/file-helpers')
 const { User, Character, Like, Category } = require('../models')
 
 const userController = {
@@ -69,7 +69,7 @@ const userController = {
     const { file } = req
     Promise.all([
       User.findByPk(req.params.id),
-      localFileHandler(file)
+      imgurFileHandler(file)
     ])
       .then(([user, filePath]) => {
         return user.update({
