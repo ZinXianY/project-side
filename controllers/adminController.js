@@ -21,7 +21,8 @@ const adminController = {
                 include: [Category],
                 where: where,
                 limit,
-                offset
+                offset,
+                order: [['categoryId', 'ASC']]
             }),
             Category.findAll({ raw: true })
         ])

@@ -20,7 +20,8 @@ const characterController = {
                 include: [Category],
                 where: where,
                 limit,
-                offset
+                offset,
+                order: [['name', 'ASC']]
             }),
             Category.findAll({ raw: true })
         ])
