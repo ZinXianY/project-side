@@ -11,7 +11,7 @@ module.exports = {
       year: '1991',
       description: '鋼彈F91武器裝備了VSBR (無段速光束步槍）及光束盾牌；還裝備了生物電腦系統以輔助操作，大幅度提高了機體的追蹤性能，機體的面部一旦打開，瞬間就會發動全部的能力。另外利用重金屬離子現象還可以造成殘像現象，擾亂探測器的機能。',
       avatarName: '西布克·亞諾',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxy_IahA6Wf3PPu_z3ck31ZLEipYKtXfBvaKLEJk4a3y2GLD8lT-k3lpSxjZMnbu7j1wA&usqp=CAU',
+      image: 'https://static.zerochan.net/Gundam.F91.full.3130394.jpg',
       avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4oA7h7jNWz5yLYsu-PxakP87C37bZdemgxXpMzR4m8DJ0M_47mCghIyAp7q84v0VSIZs&usqp=CAU',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -62,7 +62,7 @@ module.exports = {
       description: 'Z鋼彈裝備有光束軍刀、光束步槍、2連裝導彈發射器等多種式樣的武器，並且能使用大功率高能MEGA粒子炮，而變型機構的主要部件是背部飛行裝甲在上面裝備有長尾燃燒器式自穩器，提高了逆向動作時的安定性，即使變成MS形態也具有很優良的運動性能。',
       avatarName: '卡蜜兒·維丹',
       image: 'https://i.kym-cdn.com/photos/images/facebook/000/967/755/167',
-      avatar: 'https://blog-imgs-115.fc2.com/g/u/n/gundamarekore/gundam013.png',
+      avatar: 'https://cdn2.ettoday.net/images/2555/2555600.jpg',
       createdAt: new Date(),
       updatedAt: new Date(),
       categoryId: categories[4].id
@@ -182,7 +182,7 @@ module.exports = {
       description: '由Z.A.F.T開發的反中子干擾器讓核能在中子干擾器的影響下仍可融合，成功解決機體因PS裝甲與高功率光束武器的雙重運作容易使機體能源耗盡的問題，由於自由鋼彈以核能推動因此除了核原料耗盡否則機體的能量供應是永久狀態。',
       avatarName: '煌·大和',
       image: 'https://2.bp.blogspot.com/-8EOCvst4daU/VyRqKe_YTFI/AAAAAAAAUIs/GmAy4vTLTvUXhnB9qIZFaL5dzsAkFxHYACKgB/s1600/nEO_IMG_R9141304.jpg',
-      avatar: 'https://www.bnacg.com/uploads/2110/1-211020101629262.jpg',
+      avatar: 'https://upload.wikimedia.org/wikipedia/zh/e/e8/Kira2.jpg',
       createdAt: new Date(),
       updatedAt: new Date(),
       categoryId: categories[17].id
@@ -249,7 +249,7 @@ module.exports = {
     }, {
       name: '風靈鋼彈',
       year: '2022',
-      description: '風靈鋼彈只有蘇萊塔駕駛時能發揮出頂尖的機體性能，武裝為光束軍刀、光束步槍與盾牌並能將盾牌分離成11個GUND無人子機，不僅能作為遠隔操縱的全方位無線兵器浮游砲使用，更能與全身各處接點、光束步槍連結作為強化機動性與火力的裝備。',
+      description: '風靈鋼彈只有蘇萊塔駕駛時能發揮出頂尖的機體性能，武裝為光束軍刀、光束步槍與盾牌並能將盾牌分離成11個GUND子機，不僅能作為遠隔操縱的全方位無線兵器浮游砲使用，更能與全身各處接點、光束步槍連結作為強化機動性與火力的裝備。',
       avatarName: '蘇萊塔·墨丘利',
       image: 'https://storage.mantan-web.jp/images/2022/10/09/20221009dog00m200017000c/001_size6.jpg',
       avatar: 'https://image1.gamme.com.tw/news2/2022/92/73/pZuZo52dkKGYqA.jpg',
