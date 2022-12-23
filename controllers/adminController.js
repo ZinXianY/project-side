@@ -3,6 +3,7 @@ const { imgurFileHandler } = require('../helpers/file-helpers')
 const { getOffset, getPagination } = require('../helpers/pagination-helper')
 
 const adminController = {
+    //admin characters page
     getCharacters: (req, res, next) => {
         const DEFAULT_LIMIT = 8
         const categoryId = Number(req.query.categoryId) || ''
@@ -40,6 +41,7 @@ const adminController = {
             })
             .catch(err => next(err))
     },
+    //admin add character
     createCharacter: (req, res, next) => {
         return Category.findAll({
             raw: true
@@ -76,6 +78,7 @@ const adminController = {
             })
             .catch(err => next(err))
     },
+    //admin character page
     getCharacter: (req, res, next) => {
         Character.findByPk(req.params.id, {
             raw: true,
@@ -87,6 +90,7 @@ const adminController = {
             })
             .catch(err => next(err))
     },
+    //admin edit character
     editCharacter: (req, res, next) => {
         Character.findByPk(req.params.id)
             .then(character => {
@@ -131,6 +135,7 @@ const adminController = {
             })
             .catch(err => next(err))
     },
+    //admin delete character
     deleteCharacter: (req, res, next) => {
         return Character.findByPk(req.params.id)
             .then(character => {

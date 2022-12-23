@@ -1,6 +1,7 @@
 const { Category } = require('../models')
 
 const categoryController = {
+  //admin add category
   createCategory: (req, res, next) => {
     Category.findAll({
       raw: true
@@ -20,6 +21,7 @@ const categoryController = {
       })
       .catch(err => next(err))
   },
+  //admin delete category
   deleteCategory: (req, res, next) => {
     return Category.findByPk(req.params.id)
       .then(category => {

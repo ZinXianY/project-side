@@ -2,6 +2,7 @@ const { User, Character, Category } = require('../models')
 const { getOffset, getPagination } = require('../helpers/pagination-helper')
 
 const characterController = {
+    //user characters page
     getCharacters: (req, res) => {
         const DEFAULT_LIMIT = 8
         const categoryId = Number(req.query.categoryId) || ''
@@ -40,6 +41,7 @@ const characterController = {
                 })
             })
     },
+    //user character page
     getCharacter: (req, res, next) => {
         return Character.findByPk(req.params.id, {
             raw: true,
@@ -51,6 +53,7 @@ const characterController = {
             })
             .catch(err => next(err))
     },
+    //user top characters
     getTopCharacters: (req, res, next) => {
         return Character.findAll({
             include: [

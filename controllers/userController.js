@@ -6,6 +6,7 @@ const userController = {
   signUpPage: (req, res) => {
     res.render('signup')
   },
+  //user signup
   signUp: (req, res) => {
     const { name, email, password } = req.body
     const errors = []
@@ -28,10 +29,12 @@ const userController = {
   signInPage: (req, res) => {
     res.render('signin')
   },
+  //user signin
   signIn: (req, res) => {
     req.flash('success_messages', '登入成功!')
     res.redirect('/characters')
   },
+  //user logout
   logout: (req, res) => {
     req.flash('success_messages', '登出成功!')
     req.logout(err => {
@@ -57,6 +60,7 @@ const userController = {
         return res.render('profile', { user })
       })
   },
+  //user edit profile
   editUser: (req, res, next) => {
     return User.findByPk(req.params.id)
       .then(user => {
@@ -83,7 +87,7 @@ const userController = {
       })
       .catch(err => next(err))
   },
-
+  //user like character
   addLike: (req, res, next) => {
     const { characterId } = req.params
     Promise.all([
@@ -107,6 +111,7 @@ const userController = {
       })
       .catch(err => next(err))
   },
+  //user unlike character
   removeLike: (req, res, next) => {
     const { characterId } = req.params
     return Like.findOne({
@@ -124,6 +129,7 @@ const userController = {
       })
       .catch(err => next(err))
   },
+  //user search character
   getSearch: (req, res, next) => {
     const keyword = req.query.keyword
 
@@ -142,7 +148,7 @@ const userController = {
           ...c,
           isLiked: likedCharactersId.includes(c.id)
         }))
-        
+
         const search = data.filter(d => {
           if (!keyword.length) throw new Error('請輸入機體名稱!')
           return d.name.toLowerCase().includes(keyword.toLowerCase())
