@@ -296,6 +296,12 @@ hr {
     background-color: lightskyblue;
 }
 
+@media screen and (max-width: 991px) {
+    .nav-pills {
+        display: grid;
+    }
+}
+
 .category-save {
     background: linear-gradient(45deg, #198754, whitesmoke);
     border: none;
@@ -418,12 +424,6 @@ hr {
 
     .profile-avatar {
         padding-left: 70px;
-    }
-}
-
-@media screen and (max-width: 991px) {
-    .nav-pills {
-        display: grid;
     }
 }
 
