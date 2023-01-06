@@ -11,7 +11,7 @@ const methodOverride = require('method-override')
 const passport = require('./config/passport') //引入 Passport
 const { getUser } = require('./helpers/auth-helpers')
 
-const { pages } = require('./routes')
+const { pages, apis } = require('./routes')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 const app = express()
 const port = process.env.PORT
@@ -36,6 +36,7 @@ app.use((req, res, next) => {
 
 app.use(methodOverride('_method'))
 
+app.use('/api', apis)
 app.use(pages)
 
 app.listen(port, () => {
