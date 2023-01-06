@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 //controllers
-const adminController = require('../../controllers/adminController')
-const categoryController = require('../../controllers/categoryController')
+const adminController = require('../../../controllers/pages/adminController')
+const categoryController = require('../../../controllers/pages/categoryController')
 //images
-const upload = require('../../middleware/multer')
+const upload = require('../../../middleware/multer')
 const cpUpload = upload.fields([{ name: 'avatar', maxCount: 1}, { name: 'image', maxCount: 1 }])
 
 //admin create character route

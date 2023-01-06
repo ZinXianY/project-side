@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
-const { imgurFileHandler } = require('../helpers/file-helpers')
-const { User, Character, Like, Category } = require('../models')
+const { imgurFileHandler } = require('../../helpers/file-helpers')
+const { User, Character, Like, Category } = require('../../models')
 
 const userController = {
   signUpPage: (req, res) => {

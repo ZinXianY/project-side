@@ -1,5 +1,5 @@
-const { User, Character, Category } = require('../models')
-const { getOffset, getPagination } = require('../helpers/pagination-helper')
+const { User, Character, Category } = require('../../models')
+const { getOffset, getPagination } = require('../../helpers/pagination-helper')
 
 const characterController = {
     //user characters page

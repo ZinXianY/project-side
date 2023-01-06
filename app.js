@@ -11,7 +11,7 @@ const methodOverride = require('method-override')
 const passport = require('./config/passport') //引入 Passport
 const { getUser } = require('./helpers/auth-helpers')
 
-const routes = require('./routes')
+const { pages } = require('./routes')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 const app = express()
 const port = process.env.PORT
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 
 app.use(methodOverride('_method'))
 
-app.use(routes)
+app.use(pages)
 
 app.listen(port, () => {
     console.log(`App is running on http://localhost:${port}`)
