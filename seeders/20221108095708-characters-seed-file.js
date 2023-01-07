@@ -95,7 +95,7 @@ module.exports = {
       avatar: 'https://patchwiki.biligame.com/images/gundam/d/dd/fx2g63dk5ap50fv8mk52zthfsovwqw0.jpg',
       createdAt: new Date(),
       updatedAt: new Date(),
-      categoryId: categories[7].id
+      categoryId: categories[9].id
     }, {
       name: '獨角獸鋼彈(NT-D)',
       year: '2010',
@@ -115,7 +115,7 @@ module.exports = {
       avatar: 'https://img1.ak.crunchyroll.com/i/spire2/b5ddda5494b614004d7823f04e70f7431543989166_full.jpg',
       createdAt: new Date(),
       updatedAt: new Date(),
-      categoryId: categories[9].id
+      categoryId: categories[7].id
     }, {
       name: '海盜鋼彈X1',
       year: '1994',
