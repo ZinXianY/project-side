@@ -1,45 +1,11 @@
 const { Character, Category } = require('../../models')
 const { imgurFileHandler } = require('../../helpers/file-helpers')
-const { getOffset, getPagination } = require('../../helpers/pagination-helper')
+const adminServices = require('../../services/admin-services')
 
 const adminController = {
     //admin characters page
     getCharacters: (req, res, next) => {
-        const DEFAULT_LIMIT = 8
-        const categoryId = Number(req.query.categoryId) || ''
-        //Pagination
-        const page = Number(req.query.page) || 1
-        const limit = Number(req.query.limit) || DEFAULT_LIMIT
-        const offset = getOffset(limit, page)
-
-        const where = {}
-        if (categoryId) where.categoryId = categoryId
-
-        Promise.all([
-            Character.findAndCountAll({
-                raw: true,
-                nest: true,
-                include: [Category],
-                where: where,
-                limit,
-                offset,
-                order: [['categoryId', 'ASC']]
-            }),
-            Category.findAll({ raw: true })
-        ])
-            .then(([characters, categories]) => {
-                const data = characters.rows.map(r => ({
-                    ...r,
-                    description: r.description.substring(0, 50)
-                }))
-                return res.render('admin/characters', {
-                    characters: data,
-                    categories,
-                    categoryId,
-                    pagination: getPagination(limit, page, characters.count)
-                })
-            })
-            .catch(err => next(err))
+        adminServices.getCharacters(req, (err, data) => err ? next(err) : res.render('admin/characters', data))
     },
     //admin add character
     createCharacter: (req, res, next) => {
@@ -52,7 +18,6 @@ const adminController = {
     postCharacter: async (req, res, next) => {
         const { name, year, avatarName, description, categoryId } = req.body
         const { files } = req
-        console.log(req.files)
         let avatarLink
         let imageLink
 
@@ -80,15 +45,7 @@ const adminController = {
     },
     //admin character page
     getCharacter: (req, res, next) => {
-        Character.findByPk(req.params.id, {
-            raw: true,
-            nest: true,
-            include: [Category]
-        })
-            .then(character => {
-                res.render('admin/character', { character })
-            })
-            .catch(err => next(err))
+        adminServices.getCharacter(req, (err, data) => err ? next(err) : res.render('admin/character', data))
     },
     //admin edit character
     editCharacter: (req, res, next) => {
@@ -137,12 +94,11 @@ const adminController = {
     },
     //admin delete character
     deleteCharacter: (req, res, next) => {
-        return Character.findByPk(req.params.id)
-            .then(character => {
-                return character.destroy()
-            })
-            .then(() => res.redirect('/admin/characters'))
-            .catch(err => next(err))
+        adminServices.deleteCharacter(req, (err, data) => {
+            if (err) return next(err)
+            req.session.deletedData = data
+            return res.redirect('/admin/characters')
+        })
     }
 }
 
