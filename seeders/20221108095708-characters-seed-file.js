@@ -105,7 +105,7 @@ module.exports = {
       avatar: 'https://p6-bk.byteimg.com/tos-cn-i-mlhdmxsy5m/ed91a155c55c4bcbac92b762b911720f~tplv-mlhdmxsy5m-q75:0:0.image',
       createdAt: new Date(),
       updatedAt: new Date(),
-      categoryId: categories[8].id
+      categoryId: categories[7].id
     }, {
       name: 'NT鋼彈(C裝備)',
       year: '2018',
@@ -115,7 +115,7 @@ module.exports = {
       avatar: 'https://img1.ak.crunchyroll.com/i/spire2/b5ddda5494b614004d7823f04e70f7431543989166_full.jpg',
       createdAt: new Date(),
       updatedAt: new Date(),
-      categoryId: categories[7].id
+      categoryId: categories[8].id
     }, {
       name: '海盜鋼彈X1',
       year: '1994',
