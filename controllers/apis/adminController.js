@@ -1,5 +1,5 @@
 const { imgurFileHandler } = require('../../helpers/file-helpers')
-const { Character, Category } = require('../../models')
+const { Character } = require('../../models')
 const adminServices = require('../../services/admin-services')
 
 const adminController = {
@@ -16,23 +16,37 @@ const adminController = {
     try {
       const { name, year, avatarName, description, categoryId } = req.body
       if (!name) throw new Error('Character name is required!')
+      if (!description) throw new Error('Character description is required!')
       const { files } = req
-      await imgurFileHandler(files)
-        .then(filePath => Character.create({
-          name,
-          year,
-          avatarName,
-          description,
-          categoryId,
-          avatar: filePath || null,
-          image: filePath || null
-        }))
+      let avatarLink
+      let imageLink
+
+      if (files.avatar) {
+        avatarLink = await imgurFileHandler(files.avatar[0])
+      }
+      if (files.image) {
+        imageLink = await imgurFileHandler(files.image[0])
+      }
+
+      return Character.create({
+        name,
+        year,
+        avatarName,
+        description,
+        image: files.image ? imageLink : null,
+        avatar: files.avatar ? avatarLink : null,
+        categoryId
+      })
         .then(newCharacter => {
           res.json({ status: 'success', character: newCharacter })
         })
     } catch (err) {
       return next(err)
     }
+  },
+  //admin put character
+  putCharacter: (req, res, next) => {
+    adminServices.putCharacter(req, (err, data) => err ? next(err) : res.json({ status: 'success', data }))
   },
   //admin delete character
   deleteCharacter: (req, res, next) => {

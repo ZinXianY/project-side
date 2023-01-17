@@ -62,35 +62,12 @@ const adminController = {
             })
     },
     putCharacter: async (req, res, next) => {
-        const { name, year, avatarName, description } = req.body
-        const { files } = req
-        console.log(req.files)
-        let avatarLink
-        let imageLink
-
-        if (files.avatar) {
-            avatarLink = await imgurFileHandler(files.avatar[0])
-        }
-        if (files.image) {
-            imageLink = await imgurFileHandler(files.image[0])
-        }
-
-        Character.findByPk(req.params.id)
-            .then(character => {
-                character.update({
-                    name,
-                    year,
-                    avatarName,
-                    description,
-                    avatar: files.avatar ? avatarLink : character.avatar,
-                    image: files.image ? imageLink : character.image
-                })
-            })
-            .then(() => {
-                req.flash('success_messages', '角色資料更新成功!')
-                res.redirect('back')
-            })
-            .catch(err => next(err))
+        adminServices.putCharacter(req, (err, data) => {
+            if (err) return next(err)
+            req.flash('success_messages', '角色資料更新成功!')
+            req.session.updatedData = data
+            return res.redirect('back')
+        })
     },
     //admin delete character
     deleteCharacter: (req, res, next) => {
